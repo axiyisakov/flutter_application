@@ -22,7 +22,7 @@ class ProductAdapter extends TypeAdapter<Product> {
       color: fields[2] as ColorProduct,
       ram: fields[3] as SizeRam,
       storage: fields[4] as Storage,
-      paths: (fields[5] as List?)?.cast<String>(),
+      imagePath: fields[5] as String?,
     );
   }
 
@@ -41,7 +41,7 @@ class ProductAdapter extends TypeAdapter<Product> {
       ..writeByte(4)
       ..write(obj.storage)
       ..writeByte(5)
-      ..write(obj.paths);
+      ..write(obj.imagePath);
   }
 
   @override
@@ -66,8 +66,7 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
       color: $enumDecode(_$ColorProductEnumMap, json['color']),
       ram: $enumDecode(_$SizeRamEnumMap, json['ram']),
       storage: $enumDecode(_$StorageEnumMap, json['storage']),
-      paths:
-          (json['paths'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      imagePath: json['imagePath'] as String?,
     );
 
 Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>
@@ -77,7 +76,7 @@ Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>
       'color': _$ColorProductEnumMap[instance.color]!,
       'ram': _$SizeRamEnumMap[instance.ram]!,
       'storage': _$StorageEnumMap[instance.storage]!,
-      'paths': instance.paths,
+      'imagePath': instance.imagePath,
     };
 
 const _$ModelEnumEnumMap = {

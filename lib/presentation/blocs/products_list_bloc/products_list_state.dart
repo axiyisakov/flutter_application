@@ -3,7 +3,7 @@ part of 'products_list_bloc.dart';
 @freezed
 class ProductsListState with _$ProductsListState {
   const factory ProductsListState({
-    @Default(null) ProductsPage? products,
+    @Default(null) List<Product>? products,
     @Default(false) bool isFailure,
     @Default(ProductsListStatus.initial) ProductsListStatus status,
     Object? error,

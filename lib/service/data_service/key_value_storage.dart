@@ -38,7 +38,7 @@ class KeyValueStorage {
 
   final HiveInterface hive;
 
-  Future<Box<ProductsPage>> boxProducts() => _openHiveBox<ProductsPage>(
+  Future<Box<List<Product>>> boxProducts() => _openHiveBox<List<Product>>(
         _productKey,
         isTemporary: false,
       );
@@ -53,33 +53,10 @@ class KeyValueStorage {
       final directory = await (isTemporary
           ? getTemporaryDirectory()
           : getApplicationDocumentsDirectory());
-      return hive.openBox<T>(
+      return await hive.openBox<T>(
         boxKey,
         path: directory.path,
       );
-    }
-  }
-}
-
-extension CheckValueInBox<T> on Box<T> {
-  Future<bool> checkForData({
-    required String key,
-  }) async {
-    return isNotEmpty && containsKey(key) && get(key) != null;
-  }
-
-  Future getBoxData({
-    required String key,
-  }) async {
-    if (isNotEmpty) {
-      final data = get(key);
-      if (data != null) {
-        return data;
-      } else {
-        throw CacheException();
-      }
-    } else {
-      throw CacheException();
     }
   }
 }
@@ -98,13 +75,11 @@ extension SaveToHiveExtension on HiveInterface {
         data,
       )
           .then((value) {
-        debugPrint(
-            '${data.runtimeType}  is cached-----------------------------');
+        debugPrint('${data.runtimeType}  is cached--------------------');
         return value;
       });
     } else {
-      debugPrint(
-          '${data.runtimeType} page is not registered-----------------------------');
+      debugPrint('${data.runtimeType} page is not registered----------');
     }
   }
 }

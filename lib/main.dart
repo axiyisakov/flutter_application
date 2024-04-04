@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/core/util/setup.dart';
 import 'package:flutter_application/presentation/views/products_list/products_view.dart';
 
 import 'core/di/locator.dart' as sl;
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   sl.configureDependencies();
+  AppSetup.init();
   runApp(const MyApp());
 }
 

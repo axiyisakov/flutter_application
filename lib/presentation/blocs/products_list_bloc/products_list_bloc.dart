@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_application/service/data_service/local_data_service.dart';
-import 'package:flutter_application/service/models/products_page.dart';
+import 'package:flutter_application/service/models/product.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -22,7 +22,7 @@ class ProductsListBloc extends Bloc<ProductsListEvent, ProductsListState> {
   void registerHandler() {
     on<ProductsListEvent>((event, emit) async {
       await event.when(
-        getProducts: () async => await _getProductsPage(emit),
+        getProducts: () => _getProductsPage(emit),
       );
     });
   }

@@ -40,13 +40,7 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
         onSelectMemory: (Storage storage) {
           emit(state.copyWith(storage: storage));
         },
-        onSaveProduct: () async {
-          emit(state.copyWith(status: CreateProductStateStatus.loading));
-          await Future.delayed(
-            const Duration(seconds: 2),
-          );
-          emit(state.copyWith(status: CreateProductStateStatus.success));
-        },
+        onSaveProduct: () async => await saveDataToLocal(emit),
       );
     });
   }

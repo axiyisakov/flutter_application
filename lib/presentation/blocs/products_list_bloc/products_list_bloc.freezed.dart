@@ -166,7 +166,7 @@ abstract class _GetProducts implements ProductsListEvent {
 
 /// @nodoc
 mixin _$ProductsListState {
-  ProductsPage? get products => throw _privateConstructorUsedError;
+  List<Product>? get products => throw _privateConstructorUsedError;
   bool get isFailure => throw _privateConstructorUsedError;
   ProductsListStatus get status => throw _privateConstructorUsedError;
   Object? get error => throw _privateConstructorUsedError;
@@ -184,13 +184,11 @@ abstract class $ProductsListStateCopyWith<$Res> {
       _$ProductsListStateCopyWithImpl<$Res, ProductsListState>;
   @useResult
   $Res call(
-      {ProductsPage? products,
+      {List<Product>? products,
       bool isFailure,
       ProductsListStatus status,
       Object? error,
       String failureMessage});
-
-  $ProductsPageCopyWith<$Res>? get products;
 }
 
 /// @nodoc
@@ -216,7 +214,7 @@ class _$ProductsListStateCopyWithImpl<$Res, $Val extends ProductsListState>
       products: freezed == products
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
-              as ProductsPage?,
+              as List<Product>?,
       isFailure: null == isFailure
           ? _value.isFailure
           : isFailure // ignore: cast_nullable_to_non_nullable
@@ -232,18 +230,6 @@ class _$ProductsListStateCopyWithImpl<$Res, $Val extends ProductsListState>
               as String,
     ) as $Val);
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ProductsPageCopyWith<$Res>? get products {
-    if (_value.products == null) {
-      return null;
-    }
-
-    return $ProductsPageCopyWith<$Res>(_value.products!, (value) {
-      return _then(_value.copyWith(products: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -255,14 +241,11 @@ abstract class _$$ProductsListStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {ProductsPage? products,
+      {List<Product>? products,
       bool isFailure,
       ProductsListStatus status,
       Object? error,
       String failureMessage});
-
-  @override
-  $ProductsPageCopyWith<$Res>? get products;
 }
 
 /// @nodoc
@@ -284,9 +267,9 @@ class __$$ProductsListStateImplCopyWithImpl<$Res>
   }) {
     return _then(_$ProductsListStateImpl(
       products: freezed == products
-          ? _value.products
+          ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
-              as ProductsPage?,
+              as List<Product>?,
       isFailure: null == isFailure
           ? _value.isFailure
           : isFailure // ignore: cast_nullable_to_non_nullable
@@ -308,15 +291,24 @@ class __$$ProductsListStateImplCopyWithImpl<$Res>
 
 class _$ProductsListStateImpl implements _ProductsListState {
   const _$ProductsListStateImpl(
-      {this.products = null,
+      {final List<Product>? products = null,
       this.isFailure = false,
       this.status = ProductsListStatus.initial,
       this.error,
-      this.failureMessage = ''});
+      this.failureMessage = ''})
+      : _products = products;
 
+  final List<Product>? _products;
   @override
   @JsonKey()
-  final ProductsPage? products;
+  List<Product>? get products {
+    final value = _products;
+    if (value == null) return null;
+    if (_products is EqualUnmodifiableListView) return _products;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   @JsonKey()
   final bool isFailure;
@@ -339,8 +331,7 @@ class _$ProductsListStateImpl implements _ProductsListState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductsListStateImpl &&
-            (identical(other.products, products) ||
-                other.products == products) &&
+            const DeepCollectionEquality().equals(other._products, _products) &&
             (identical(other.isFailure, isFailure) ||
                 other.isFailure == isFailure) &&
             (identical(other.status, status) || other.status == status) &&
@@ -350,8 +341,13 @@ class _$ProductsListStateImpl implements _ProductsListState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, products, isFailure, status,
-      const DeepCollectionEquality().hash(error), failureMessage);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_products),
+      isFailure,
+      status,
+      const DeepCollectionEquality().hash(error),
+      failureMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -363,14 +359,14 @@ class _$ProductsListStateImpl implements _ProductsListState {
 
 abstract class _ProductsListState implements ProductsListState {
   const factory _ProductsListState(
-      {final ProductsPage? products,
+      {final List<Product>? products,
       final bool isFailure,
       final ProductsListStatus status,
       final Object? error,
       final String failureMessage}) = _$ProductsListStateImpl;
 
   @override
-  ProductsPage? get products;
+  List<Product>? get products;
   @override
   bool get isFailure;
   @override

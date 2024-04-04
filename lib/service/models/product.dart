@@ -13,18 +13,12 @@ part 'product.g.dart';
 @HiveType(typeId: 0)
 class Product with _$Product {
   const factory Product({
-    @HiveField(0)
-    required String id,
-    @HiveField(1)
-    required ModelEnum model,
-    @HiveField(2)
-    required ColorProduct color,
-    @HiveField(3)
-    required SizeRam ram,
-    @HiveField(4)
-    required Storage storage,
-    @HiveField(5)
-    List<String>? paths,
+    @HiveField(0) required String id,
+    @HiveField(1) required ModelEnum model,
+    @HiveField(2) required ColorProduct color,
+    @HiveField(3) required SizeRam ram,
+    @HiveField(4) required Storage storage,
+    @HiveField(5) String? imagePath,
   }) = _Product;
 
   factory Product.fromJson(Map<String, Object?> json) =>

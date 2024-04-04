@@ -31,7 +31,7 @@ mixin _$Product {
   @HiveField(4)
   Storage get storage => throw _privateConstructorUsedError;
   @HiveField(5)
-  List<String>? get paths => throw _privateConstructorUsedError;
+  String? get imagePath => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,7 +49,7 @@ abstract class $ProductCopyWith<$Res> {
       @HiveField(2) ColorProduct color,
       @HiveField(3) SizeRam ram,
       @HiveField(4) Storage storage,
-      @HiveField(5) List<String>? paths});
+      @HiveField(5) String? imagePath});
 }
 
 /// @nodoc
@@ -70,7 +70,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? color = null,
     Object? ram = null,
     Object? storage = null,
-    Object? paths = freezed,
+    Object? imagePath = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -93,10 +93,10 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.storage
           : storage // ignore: cast_nullable_to_non_nullable
               as Storage,
-      paths: freezed == paths
-          ? _value.paths
-          : paths // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+      imagePath: freezed == imagePath
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -114,7 +114,7 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
       @HiveField(2) ColorProduct color,
       @HiveField(3) SizeRam ram,
       @HiveField(4) Storage storage,
-      @HiveField(5) List<String>? paths});
+      @HiveField(5) String? imagePath});
 }
 
 /// @nodoc
@@ -133,7 +133,7 @@ class __$$ProductImplCopyWithImpl<$Res>
     Object? color = null,
     Object? ram = null,
     Object? storage = null,
-    Object? paths = freezed,
+    Object? imagePath = freezed,
   }) {
     return _then(_$ProductImpl(
       id: null == id
@@ -156,10 +156,10 @@ class __$$ProductImplCopyWithImpl<$Res>
           ? _value.storage
           : storage // ignore: cast_nullable_to_non_nullable
               as Storage,
-      paths: freezed == paths
-          ? _value._paths
-          : paths // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+      imagePath: freezed == imagePath
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -173,8 +173,7 @@ class _$ProductImpl implements _Product {
       @HiveField(2) required this.color,
       @HiveField(3) required this.ram,
       @HiveField(4) required this.storage,
-      @HiveField(5) final List<String>? paths})
-      : _paths = paths;
+      @HiveField(5) this.imagePath});
 
   factory _$ProductImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductImplFromJson(json);
@@ -194,20 +193,13 @@ class _$ProductImpl implements _Product {
   @override
   @HiveField(4)
   final Storage storage;
-  final List<String>? _paths;
   @override
   @HiveField(5)
-  List<String>? get paths {
-    final value = _paths;
-    if (value == null) return null;
-    if (_paths is EqualUnmodifiableListView) return _paths;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final String? imagePath;
 
   @override
   String toString() {
-    return 'Product(id: $id, model: $model, color: $color, ram: $ram, storage: $storage, paths: $paths)';
+    return 'Product(id: $id, model: $model, color: $color, ram: $ram, storage: $storage, imagePath: $imagePath)';
   }
 
   @override
@@ -220,13 +212,14 @@ class _$ProductImpl implements _Product {
             (identical(other.color, color) || other.color == color) &&
             (identical(other.ram, ram) || other.ram == ram) &&
             (identical(other.storage, storage) || other.storage == storage) &&
-            const DeepCollectionEquality().equals(other._paths, _paths));
+            (identical(other.imagePath, imagePath) ||
+                other.imagePath == imagePath));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, model, color, ram, storage,
-      const DeepCollectionEquality().hash(_paths));
+  int get hashCode =>
+      Object.hash(runtimeType, id, model, color, ram, storage, imagePath);
 
   @JsonKey(ignore: true)
   @override
@@ -249,7 +242,7 @@ abstract class _Product implements Product {
       @HiveField(2) required final ColorProduct color,
       @HiveField(3) required final SizeRam ram,
       @HiveField(4) required final Storage storage,
-      @HiveField(5) final List<String>? paths}) = _$ProductImpl;
+      @HiveField(5) final String? imagePath}) = _$ProductImpl;
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$ProductImpl.fromJson;
 
@@ -270,7 +263,7 @@ abstract class _Product implements Product {
   Storage get storage;
   @override
   @HiveField(5)
-  List<String>? get paths;
+  String? get imagePath;
   @override
   @JsonKey(ignore: true)
   _$$ProductImplCopyWith<_$ProductImpl> get copyWith =>

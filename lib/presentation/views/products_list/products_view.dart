@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/core/di/locator.dart';
 import 'package:flutter_application/presentation/blocs/products_list_bloc/products_list_bloc.dart';
 import 'package:flutter_application/presentation/views/create_product/create_product_view.dart';
-import 'package:flutter_application/service/models/products_page.dart';
+import 'package:flutter_application/service/models/product.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductsListView extends StatelessWidget {
@@ -58,7 +58,7 @@ class _ProductsListPage extends StatelessWidget {
 }
 
 class __ProductsListViewBody extends StatelessWidget {
-  final ProductsPage products;
+  final List<Product> products;
   const __ProductsListViewBody({
     super.key,
     required this.products,
@@ -71,16 +71,18 @@ class __ProductsListViewBody extends StatelessWidget {
       itemBuilder: (ctx, index) => Card(
           child: ListTile(
         title: Text(
-          products.products[index].model.name,
+          products[index].model.name,
+          style: const TextStyle(color: Colors.black),
         ),
         subtitle: Text(
-          products.products[index].color.name,
+          products[index].color.name,
+          style: const TextStyle(color: Colors.black),
         ),
       )),
       separatorBuilder: (ctx, index) => const SizedBox(
         height: 10,
       ),
-      itemCount: products.products.length,
+      itemCount: products.length,
     );
   }
 }
