@@ -17,7 +17,7 @@ class RamSelectorView extends StatelessWidget {
       const Text("Ram Selector"),
       ...ListTile.divideTiles(
         context: context,
-        color: Colors.red,
+        color: Colors.transparent,
         tiles: SizeRam.values.map(
           (e) => RadioListTile<SizeRam>(
             title: Text(e.ram.toString()),

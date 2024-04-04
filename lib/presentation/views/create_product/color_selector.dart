@@ -17,7 +17,7 @@ class ColorSelectorView extends StatelessWidget {
       const Text("Color Selector"),
       ...ListTile.divideTiles(
         context: context,
-        color: Colors.red,
+        color: Colors.transparent,
         tiles: ColorProduct.values.map(
           (e) => RadioListTile<ColorProduct>(
             title: Text(e.name.toString()),

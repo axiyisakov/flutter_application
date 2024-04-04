@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/core/util/setup.dart';
 import 'package:flutter_application/presentation/views/products_list/products_view.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import 'core/di/locator.dart' as sl;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   sl.configureDependencies();
+
   AppSetup.init();
   runApp(const MyApp());
 }
@@ -24,6 +26,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const ProductsListView(),
+      builder: EasyLoading.init(),
     );
   }
 }

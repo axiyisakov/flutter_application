@@ -2,5 +2,6 @@ part of 'upload_photo_bloc.dart';
 
 @freezed
 class UploadPhotoEvent with _$UploadPhotoEvent {
-  const factory UploadPhotoEvent.started() = _Started;
+  const factory UploadPhotoEvent.pickImage() = _Started;
+  const factory UploadPhotoEvent.uploadImage(File image) = _UploadImage;
 }

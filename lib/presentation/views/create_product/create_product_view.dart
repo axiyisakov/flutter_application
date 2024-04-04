@@ -3,6 +3,7 @@ import 'package:flutter_application/core/di/locator.dart';
 import 'package:flutter_application/presentation/blocs/create_bloc/create_product_bloc.dart';
 import 'package:flutter_application/presentation/views/create_product/ram_selector.dart';
 import 'package:flutter_application/presentation/views/products_list/products_view.dart';
+import 'package:flutter_application/presentation/views/upload_image/upload_horizontal_widget.dart';
 import 'package:flutter_application/service/models/color_enum.dart';
 import 'package:flutter_application/service/models/memory_enum.dart';
 import 'package:flutter_application/service/models/model_enum.dart';
@@ -122,6 +123,10 @@ class _CreateProductBody extends StatelessWidget {
                         ram: ram,
                       );
                     }),
+                const SizedBox(
+                  height: 20,
+                ),
+                const UploadHorizontalWidget(),
                 const SizedBox(
                   height: 20,
                 ),

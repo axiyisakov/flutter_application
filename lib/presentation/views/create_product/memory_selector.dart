@@ -14,7 +14,7 @@ class MemorySelectorView extends StatelessWidget {
       const Text("Memory Selector"),
       ...ListTile.divideTiles(
         context: context,
-        color: Colors.red,
+        color: Colors.transparent,
         tiles: Storage.values.map(
           (e) => RadioListTile<Storage>(
             title: Text(e.name.toString()),

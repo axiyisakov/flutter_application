@@ -14,7 +14,7 @@ class ModelSelectorView extends StatelessWidget {
       const Text("Model Selector"),
       ...ListTile.divideTiles(
         context: context,
-        color: Colors.red,
+        color: Colors.transparent,
         tiles: ModelEnum.values.map(
           (e) => RadioListTile<ModelEnum>(
             title: Text(e.name.toString()),
