@@ -21,6 +21,8 @@ dependencies:
   path_provider: ^2.0.2
   hive: any
   hive_flutter: any
+  get_it: any
+  injectable: any
 
 dev_dependencies:
   flutter_test:
@@ -31,6 +33,7 @@ dev_dependencies:
   freezed: ^2.4.7
   json_serializable: ^6.7.1
   hive_generator: any
+  injectable_generator: any
 flutter:
   uses-material-design: true
 

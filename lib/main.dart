@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/presentation/views/create_product/create_product_view.dart';
+import 'package:flutter_application/presentation/views/products_list/products_view.dart';
+
+import 'core/di/locator.dart' as sl;
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  sl.configureDependencies();
   runApp(const MyApp());
 }
 
@@ -11,11 +14,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.deepPurple,
         ),
-        home: CreateProductView());
+        useMaterial3: true,
+      ),
+      home: const ProductsListView(),
+    );
   }
 }

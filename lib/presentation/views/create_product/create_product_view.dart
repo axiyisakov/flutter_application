@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/core/di/locator.dart';
 import 'package:flutter_application/presentation/blocs/create_bloc/create_product_bloc.dart';
 import 'package:flutter_application/presentation/views/create_product/ram_selector.dart';
+import 'package:flutter_application/presentation/views/products_list/products_view.dart';
 import 'package:flutter_application/service/models/color_enum.dart';
 import 'package:flutter_application/service/models/memory_enum.dart';
 import 'package:flutter_application/service/models/model_enum.dart';
@@ -17,7 +19,7 @@ class CreateProductView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<CreateProductBloc>(
-      create: (_) => CreateProductBloc(),
+      create: (_) => sl<CreateProductBloc>(),
       child: const _CreateProductPage(),
     );
   }
@@ -34,18 +36,32 @@ class _CreateProductPageState extends State<_CreateProductPage> {
   CreateProductBloc get _bloc => context.read<CreateProductBloc>();
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CreateProductBloc, CreateProductState>(
-      bloc: _bloc,
-      builder: (context, state) {
-        return switch (state.status) {
-          CreateProductStateStatus.initial => const _CreateProductBody(),
-          CreateProductStateStatus.loading =>
-            const Center(child: CircularProgressIndicator()),
-          CreateProductStateStatus.success =>
-            const Center(child: Text('Product saved')),
-          CreateProductStateStatus.error => const Center(child: Text('Error')),
-        };
-      },
+    return Material(
+      child: BlocListener<CreateProductBloc, CreateProductState>(
+        listener: (context, state) {
+          if (state.status == CreateProductStateStatus.success) {
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(
+                builder: (context) => const ProductsListView(),
+              ),
+            );
+          }
+        },
+        child: BlocBuilder<CreateProductBloc, CreateProductState>(
+          bloc: _bloc,
+          builder: (context, state) {
+            return switch (state.status) {
+              CreateProductStateStatus.initial => const _CreateProductBody(),
+              CreateProductStateStatus.loading =>
+                const Center(child: CircularProgressIndicator()),
+              CreateProductStateStatus.success =>
+                const Center(child: Text('Product saved')),
+              CreateProductStateStatus.error =>
+                const Center(child: Text('Error')),
+            };
+          },
+        ),
+      ),
     );
   }
 }

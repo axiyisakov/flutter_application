@@ -1,18 +1,33 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_application/core/exception/exceptions.dart';
+import 'package:flutter_application/service/models/color_enum.dart';
+import 'package:flutter_application/service/models/memory_enum.dart';
+import 'package:flutter_application/service/models/model_enum.dart';
 import 'package:flutter_application/service/models/product.dart';
 import 'package:flutter_application/service/models/products_page.dart';
+import 'package:flutter_application/service/models/size_enum.dart';
 import 'package:hive/hive.dart';
+import 'package:injectable/injectable.dart';
 import 'package:path_provider/path_provider.dart';
 
+abstract final class KeysOfStorage {
+  static const productKey = '-product-box';
+}
+
+@singleton
 class KeyValueStorage {
   static const _productKey = '-product-box';
-
   KeyValueStorage({
-    required this.hive,
+    @Named('HiveInterface') required this.hive,
   }) {
     try {
-      hive.registerAdapter(ProductAdapter());
+      hive
+        ..registerAdapter(ProductsPageAdapter())
+        ..registerAdapter(ColorProductAdapter())
+        ..registerAdapter(ModelEnumAdapter())
+        ..registerAdapter(StorageAdapter())
+        ..registerAdapter(SizeRamAdapter())
+        ..registerAdapter(ProductAdapter());
       debugPrint('Hive is initialized');
     } catch (_) {
       debugPrint(
@@ -53,15 +68,16 @@ extension CheckValueInBox<T> on Box<T> {
     return isNotEmpty && containsKey(key) && get(key) != null;
   }
 
-  T getBoxData({
+  Future getBoxData({
     required String key,
-  }) {
+  }) async {
     if (isNotEmpty) {
       final data = get(key);
       if (data != null) {
         return data;
+      } else {
+        throw CacheException();
       }
-      throw CacheException();
     } else {
       throw CacheException();
     }
