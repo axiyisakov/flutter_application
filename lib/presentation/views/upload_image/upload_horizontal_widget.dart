@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/core/di/locator.dart';
+import 'package:flutter_application/presentation/blocs/create_bloc/create_product_bloc.dart';
 import 'package:flutter_application/presentation/blocs/upload_photo_bloc/upload_photo_bloc.dart';
 import 'package:flutter_application/presentation/views/upload_image/pick_image.dart';
 import 'package:flutter_application/presentation/views/upload_image/upload_image_widget.dart';
@@ -50,6 +51,11 @@ class _UploadView extends StatelessWidget {
       listener: (context, state) {
         if (state.message != null) {
           debugPrint(state.message!);
+        }
+        if (state.status == UploadPhotoStatus.success) {
+          BlocProvider.of<CreateProductBloc>(context, listen: false).add(
+            CreateProductEvent.onSelectImageUrl(state.url!),
+          );
         }
       },
     );

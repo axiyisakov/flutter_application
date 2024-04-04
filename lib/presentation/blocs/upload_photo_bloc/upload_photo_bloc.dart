@@ -75,10 +75,12 @@ class UploadPhotoBloc extends Bloc<UploadPhotoEvent, UploadPhotoState> {
         },
       );
       debugPrint(response.toString());
+
       emit(
         state.copyWith(
           status: UploadPhotoStatus.success,
-          message: response.toString(),
+          message: response.first.url,
+          url: response.first.url,
         ),
       );
     } catch (e) {

@@ -40,6 +40,9 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
         onSelectMemory: (Storage storage) {
           emit(state.copyWith(storage: storage));
         },
+        onSelectImageUrl: (url) {
+          emit(state.copyWith(imageUrl: url));
+        },
         onSaveProduct: () async => await saveDataToLocal(emit),
       );
     });
@@ -58,6 +61,7 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
         color: state.color,
         ram: state.size,
         storage: state.storage,
+        imagePath: state.imageUrl,
       );
 
       await _dataService

@@ -8,14 +8,9 @@ class CreateProductState with _$CreateProductState {
     @Default(SizeRam.r8) SizeRam size,
     @Default(Storage.s256) Storage storage,
     @Default(CreateProductStateStatus.initial) CreateProductStateStatus status,
+    String? imageUrl,
     Object? error,
   }) = _CreateProductState;
 }
 
-
-enum CreateProductStateStatus{
-  initial,
-  loading,
-  success,
-  error
-}
+enum CreateProductStateStatus { initial, loading, success, error }

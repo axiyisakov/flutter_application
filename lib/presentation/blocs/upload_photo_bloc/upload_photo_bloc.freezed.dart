@@ -313,6 +313,7 @@ abstract class _UploadImage implements UploadPhotoEvent {
 mixin _$UploadPhotoState {
   UploadPhotoStatus get status => throw _privateConstructorUsedError;
   File? get image => throw _privateConstructorUsedError;
+  String? get url => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   double? get proggress => throw _privateConstructorUsedError;
   Object? get error => throw _privateConstructorUsedError;
@@ -331,6 +332,7 @@ abstract class $UploadPhotoStateCopyWith<$Res> {
   $Res call(
       {UploadPhotoStatus status,
       File? image,
+      String? url,
       String? message,
       double? proggress,
       Object? error});
@@ -351,6 +353,7 @@ class _$UploadPhotoStateCopyWithImpl<$Res, $Val extends UploadPhotoState>
   $Res call({
     Object? status = null,
     Object? image = freezed,
+    Object? url = freezed,
     Object? message = freezed,
     Object? proggress = freezed,
     Object? error = freezed,
@@ -364,6 +367,10 @@ class _$UploadPhotoStateCopyWithImpl<$Res, $Val extends UploadPhotoState>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as File?,
+      url: freezed == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String?,
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -388,6 +395,7 @@ abstract class _$$UploadPhotoStateImplCopyWith<$Res>
   $Res call(
       {UploadPhotoStatus status,
       File? image,
+      String? url,
       String? message,
       double? proggress,
       Object? error});
@@ -406,6 +414,7 @@ class __$$UploadPhotoStateImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? image = freezed,
+    Object? url = freezed,
     Object? message = freezed,
     Object? proggress = freezed,
     Object? error = freezed,
@@ -419,6 +428,10 @@ class __$$UploadPhotoStateImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as File?,
+      url: freezed == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String?,
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -438,6 +451,7 @@ class _$UploadPhotoStateImpl implements _UploadPhotoState {
   const _$UploadPhotoStateImpl(
       {this.status = UploadPhotoStatus.pickImage,
       this.image,
+      this.url,
       this.message,
       this.proggress,
       this.error});
@@ -448,6 +462,8 @@ class _$UploadPhotoStateImpl implements _UploadPhotoState {
   @override
   final File? image;
   @override
+  final String? url;
+  @override
   final String? message;
   @override
   final double? proggress;
@@ -456,7 +472,7 @@ class _$UploadPhotoStateImpl implements _UploadPhotoState {
 
   @override
   String toString() {
-    return 'UploadPhotoState(status: $status, image: $image, message: $message, proggress: $proggress, error: $error)';
+    return 'UploadPhotoState(status: $status, image: $image, url: $url, message: $message, proggress: $proggress, error: $error)';
   }
 
   @override
@@ -466,6 +482,7 @@ class _$UploadPhotoStateImpl implements _UploadPhotoState {
             other is _$UploadPhotoStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.image, image) || other.image == image) &&
+            (identical(other.url, url) || other.url == url) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.proggress, proggress) ||
                 other.proggress == proggress) &&
@@ -473,7 +490,7 @@ class _$UploadPhotoStateImpl implements _UploadPhotoState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, image, message,
+  int get hashCode => Object.hash(runtimeType, status, image, url, message,
       proggress, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
@@ -488,6 +505,7 @@ abstract class _UploadPhotoState implements UploadPhotoState {
   const factory _UploadPhotoState(
       {final UploadPhotoStatus status,
       final File? image,
+      final String? url,
       final String? message,
       final double? proggress,
       final Object? error}) = _$UploadPhotoStateImpl;
@@ -496,6 +514,8 @@ abstract class _UploadPhotoState implements UploadPhotoState {
   UploadPhotoStatus get status;
   @override
   File? get image;
+  @override
+  String? get url;
   @override
   String? get message;
   @override

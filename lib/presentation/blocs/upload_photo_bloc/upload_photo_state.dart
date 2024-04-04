@@ -5,6 +5,7 @@ class UploadPhotoState with _$UploadPhotoState {
   const factory UploadPhotoState({
     @Default(UploadPhotoStatus.pickImage) UploadPhotoStatus status,
     File? image,
+    String? url,
     String? message,
     double? proggress,
     Object? error,

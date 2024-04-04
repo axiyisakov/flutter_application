@@ -70,6 +70,12 @@ class __ProductsListViewBody extends StatelessWidget {
       shrinkWrap: true,
       itemBuilder: (ctx, index) => Card(
           child: ListTile(
+        leading: products[index].imagePath != null
+            ? CircleAvatar(
+                backgroundImage: NetworkImage(
+                    "https://api-test.coozin.uz${products[index].imagePath!}"),
+              )
+            : const SizedBox.shrink(),
         title: Text(
           products[index].model.name,
           style: const TextStyle(color: Colors.black),
