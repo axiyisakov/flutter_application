@@ -4,7 +4,6 @@ import 'package:flutter_application/service/models/color_enum.dart';
 import 'package:flutter_application/service/models/memory_enum.dart';
 import 'package:flutter_application/service/models/model_enum.dart';
 import 'package:flutter_application/service/models/product.dart';
-import 'package:flutter_application/service/models/products_page.dart';
 import 'package:flutter_application/service/models/size_enum.dart';
 import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
@@ -22,7 +21,6 @@ class KeyValueStorage {
   }) {
     try {
       hive
-        ..registerAdapter(ProductsPageAdapter())
         ..registerAdapter(ColorProductAdapter())
         ..registerAdapter(ModelEnumAdapter())
         ..registerAdapter(StorageAdapter())

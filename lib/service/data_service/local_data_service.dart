@@ -8,7 +8,7 @@ import 'package:injectable/injectable.dart';
 
 abstract interface class LocalDataService {
   Future<void> saveProduct(Product product);
-  Future<List<Product>?> getProducts();
+  Future<List<Product>> getProducts();
   Future<Product> getProductById(String id);
 }
 
@@ -26,9 +26,12 @@ class LocalDataServiceImpl implements LocalDataService {
     try {
       final box = await storage.boxProducts();
       final previousProducts = await getProducts();
-      debugPrint(previousProducts.toString());
-      final productsList = [...?previousProducts, product];
-      debugPrint(productsList.toString());
+      // debugPrint(previousProducts.toString());
+      final List<Product> productsList = <Product>[
+        ...previousProducts,
+        product
+      ];
+      // debugPrint(productsList.toString());
       return hive.saveToBox<List<Product>>(
         box: box,
         key: KeysOfStorage.productKey,
@@ -41,14 +44,14 @@ class LocalDataServiceImpl implements LocalDataService {
   }
 
   @override
-  Future<List<Product>?> getProducts() async {
+  Future<List<Product>> getProducts() async {
     try {
       final box = await storage.boxProducts();
-      final data = box.get(
+      debugPrint(box.values.toString());
+      return List<Product>.from(box.get(
             KeysOfStorage.productKey,
           ) ??
-          [];
-      return data;
+          []);
     } catch (e, s) {
       debugPrint("e:$e   s:$s");
       rethrow;
