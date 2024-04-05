@@ -6,9 +6,8 @@ class CreateProductEvent with _$CreateProductEvent {
       _SelectModel;
   const factory CreateProductEvent.onSelectColor(ColorProduct color) =
       _SelectColor;
-  const factory CreateProductEvent.onSelectSize(SizeRam size) = _SelectRam;
-  const factory CreateProductEvent.onSelectMemory(Storage storage) =
-      _SelectStorage;
   const factory CreateProductEvent.onSaveProduct() = _SaveProduct;
   const factory CreateProductEvent.onSelectImageUrl(String url) = _SelectUrl;
+
+  const factory CreateProductEvent.onSelectProduct(Product storage) = _SelectProduct;
 }

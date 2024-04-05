@@ -315,7 +315,7 @@ mixin _$UploadPhotoState {
   File? get image => throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
-  double? get proggress => throw _privateConstructorUsedError;
+  double get proggress => throw _privateConstructorUsedError;
   Object? get error => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -334,7 +334,7 @@ abstract class $UploadPhotoStateCopyWith<$Res> {
       File? image,
       String? url,
       String? message,
-      double? proggress,
+      double proggress,
       Object? error});
 }
 
@@ -355,7 +355,7 @@ class _$UploadPhotoStateCopyWithImpl<$Res, $Val extends UploadPhotoState>
     Object? image = freezed,
     Object? url = freezed,
     Object? message = freezed,
-    Object? proggress = freezed,
+    Object? proggress = null,
     Object? error = freezed,
   }) {
     return _then(_value.copyWith(
@@ -375,10 +375,10 @@ class _$UploadPhotoStateCopyWithImpl<$Res, $Val extends UploadPhotoState>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      proggress: freezed == proggress
+      proggress: null == proggress
           ? _value.proggress
           : proggress // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       error: freezed == error ? _value.error : error,
     ) as $Val);
   }
@@ -397,7 +397,7 @@ abstract class _$$UploadPhotoStateImplCopyWith<$Res>
       File? image,
       String? url,
       String? message,
-      double? proggress,
+      double proggress,
       Object? error});
 }
 
@@ -416,7 +416,7 @@ class __$$UploadPhotoStateImplCopyWithImpl<$Res>
     Object? image = freezed,
     Object? url = freezed,
     Object? message = freezed,
-    Object? proggress = freezed,
+    Object? proggress = null,
     Object? error = freezed,
   }) {
     return _then(_$UploadPhotoStateImpl(
@@ -436,10 +436,10 @@ class __$$UploadPhotoStateImplCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      proggress: freezed == proggress
+      proggress: null == proggress
           ? _value.proggress
           : proggress // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       error: freezed == error ? _value.error : error,
     ));
   }
@@ -453,7 +453,7 @@ class _$UploadPhotoStateImpl implements _UploadPhotoState {
       this.image,
       this.url,
       this.message,
-      this.proggress,
+      this.proggress = 0,
       this.error});
 
   @override
@@ -466,7 +466,8 @@ class _$UploadPhotoStateImpl implements _UploadPhotoState {
   @override
   final String? message;
   @override
-  final double? proggress;
+  @JsonKey()
+  final double proggress;
   @override
   final Object? error;
 
@@ -507,7 +508,7 @@ abstract class _UploadPhotoState implements UploadPhotoState {
       final File? image,
       final String? url,
       final String? message,
-      final double? proggress,
+      final double proggress,
       final Object? error}) = _$UploadPhotoStateImpl;
 
   @override
@@ -519,7 +520,7 @@ abstract class _UploadPhotoState implements UploadPhotoState {
   @override
   String? get message;
   @override
-  double? get proggress;
+  double get proggress;
   @override
   Object? get error;
   @override

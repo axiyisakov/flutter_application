@@ -20,25 +20,52 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
     required LocalDataService dataService,
   })  : _dataService = dataService,
         super(
-          const CreateProductState(),
+          const CreateProductState(
+
+          ),
         ) {
     registerEvents();
+    fetchProducts();
+  }
+
+  void fetchProducts(){
+     final products = List<Product>.empty(growable: true);
+     ModelEnum.values.forEach((model) {
+      ColorProduct.values.forEach((color) {
+        Storage.values.forEach((storage) {
+         SizeRam.values.forEach((ram) {
+
+             products.add(Product(
+               id: const Uuid().v4(),
+               model: model,
+               color: color,
+               storage: storage,
+               ram: ram,
+
+               imagePath: ''));
+
+           });
+         });
+
+      });
+     });
+
+      emit(state.copyWith(products: products));
   }
 
   void registerEvents() {
     on<CreateProductEvent>((event, emit) async {
       await event.when(
         onSelectModel: (ModelEnum model) {
-          emit(state.copyWith(model: model));
+          emit(state.copyWith(model: model,selectedProduct: null));
         },
         onSelectColor: (ColorProduct color) {
-          emit(state.copyWith(color: color));
+          emit(state.copyWith(color: color,selectedProduct: null));
         },
-        onSelectSize: (SizeRam size) {
-          emit(state.copyWith(size: size));
-        },
-        onSelectMemory: (Storage storage) {
-          emit(state.copyWith(storage: storage));
+        onSelectProduct: (Product product) async {
+
+           emit(state.copyWith(selectedProduct: product));
+
         },
         onSelectImageUrl: (url) {
           emit(state.copyWith(imageUrl: url));
@@ -55,18 +82,13 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
           status: CreateProductStateStatus.loading,
         ),
       );
-      final product = Product(
-        id: const Uuid().v4(),
-        model: state.model,
-        color: state.color,
-        ram: state.size,
-        storage: state.storage,
+      final newProduct = state.selectedProduct!.copyWith(
         imagePath: state.imageUrl,
       );
 
       await _dataService
           .saveProduct(
-            product,
+           newProduct,
           )
           .whenComplete(() => emitter(
                 state.copyWith(

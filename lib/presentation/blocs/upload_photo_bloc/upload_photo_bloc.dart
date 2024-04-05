@@ -59,21 +59,20 @@ class UploadPhotoBloc extends Bloc<UploadPhotoEvent, UploadPhotoState> {
 
   Future<void> _uploadImage(File image, Emitter<UploadPhotoState> emit) async {
     try {
-      emit(state.copyWith(status: UploadPhotoStatus.loading));
+      emit(state.copyWith(status: UploadPhotoStatus.uploading));
       final response = await _client.uploadImage(
         image,
         onSendProgress: (sent, total) {
           final progress = sent / total;
+
           EasyLoading.showProgress(progress);
           emit(
             state.copyWith(
-              status: UploadPhotoStatus.uploadImage,
               proggress: progress,
             ),
           );
-          EasyLoading.dismiss();
         },
-      );
+      ).whenComplete(() => EasyLoading.dismiss());
       debugPrint(response.toString());
 
       emit(

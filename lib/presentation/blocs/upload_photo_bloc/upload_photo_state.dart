@@ -7,7 +7,7 @@ class UploadPhotoState with _$UploadPhotoState {
     File? image,
     String? url,
     String? message,
-    double? proggress,
+    @Default(0) double proggress,
     Object? error,
   }) = _UploadPhotoState;
 }
@@ -19,4 +19,5 @@ enum UploadPhotoStatus {
   failure,
   pickImage,
   uploadImage,
+  uploading,
 }

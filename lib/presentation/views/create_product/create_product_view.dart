@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/core/di/locator.dart';
 import 'package:flutter_application/presentation/blocs/create_bloc/create_product_bloc.dart';
-import 'package:flutter_application/presentation/views/create_product/ram_selector.dart';
+import 'package:flutter_application/presentation/views/create_product/randomize_product.dart';
 import 'package:flutter_application/presentation/views/products_list/products_view.dart';
 import 'package:flutter_application/presentation/views/upload_image/upload_horizontal_widget.dart';
 import 'package:flutter_application/service/models/color_enum.dart';
-import 'package:flutter_application/service/models/memory_enum.dart';
 import 'package:flutter_application/service/models/model_enum.dart';
-import 'package:flutter_application/service/models/size_enum.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'color_selector.dart';
-import 'memory_selector.dart';
 import 'model_selector.dart';
 
 class CreateProductView extends StatelessWidget {
@@ -104,28 +101,17 @@ class _CreateProductBody extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                BlocSelector<CreateProductBloc, CreateProductState, Storage>(
-                    bloc: bloc,
-                    selector: (state) => state.storage,
-                    builder: (context, storage) {
-                      return MemorySelectorView(
-                        storage: storage,
-                        colorProduct: bloc.state.color,
-                        ram: bloc.state.size,
-                        model: bloc.state.model,
-                      );
-                    }),
-                const SizedBox(
-                  height: 20,
-                ),
-                BlocSelector<CreateProductBloc, CreateProductState, SizeRam>(
-                    bloc: bloc,
-                    selector: (state) => state.size,
-                    builder: (context, ram) {
-                      return RamSelectorView(
-                        ram: ram,
-                      );
-                    }),
+
+              BlocBuilder<CreateProductBloc, CreateProductState>(
+                buildWhen: (previous, current) =>
+                (previous.model != current.model) ||(previous.color != current.color)|| (previous.selectedProduct != current.selectedProduct),
+                  builder: (ctx,state){
+                     return RandomizeProduct(products: state.products.where((product) => product.model==state.model && product.color==state.color,).toList(),
+                     id: state.selectedProduct?.id,
+                     );
+                  }
+              ),
+
                 const SizedBox(
                   height: 20,
                 ),

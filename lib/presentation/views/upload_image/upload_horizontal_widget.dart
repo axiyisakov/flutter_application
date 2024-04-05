@@ -43,6 +43,13 @@ class _UploadView extends StatelessWidget {
           UploadPhotoStatus.uploadImage => UploadImageWidget(
               image: state.image,
             ),
+          UploadPhotoStatus.uploading =>  Center(
+              child: Center(
+                child: CircularProgressIndicator(
+                  value: state.proggress,
+                ),
+              ),
+            ),
           _ => const Center(
               child: Text('Pick Image'),
             ),

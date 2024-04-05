@@ -5,9 +5,9 @@ class CreateProductState with _$CreateProductState {
   const factory CreateProductState({
     @Default(ModelEnum.m1pro) ModelEnum model,
     @Default(ColorProduct.black) ColorProduct color,
-    @Default(SizeRam.r8) SizeRam size,
-    @Default(Storage.s256) Storage storage,
     @Default(CreateProductStateStatus.initial) CreateProductStateStatus status,
+    @Default([]) List<Product> products,
+    Product? selectedProduct,
     String? imageUrl,
     Object? error,
   }) = _CreateProductState;

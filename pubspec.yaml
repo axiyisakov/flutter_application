@@ -30,6 +30,7 @@ dependencies:
   flutter_easyloading: any
   permission_handler: ^11.3.1
   image_picker: ^1.0.7
+  flutter_staggered_animations: ^1.1.1
 
 dev_dependencies:
   ffigen: any
