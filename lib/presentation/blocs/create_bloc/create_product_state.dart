@@ -3,8 +3,10 @@ part of 'create_product_bloc.dart';
 @freezed
 class CreateProductState with _$CreateProductState {
   const factory CreateProductState({
-    @Default(ModelEnum.m1pro) ModelEnum model,
-    @Default(ColorProduct.black) ColorProduct color,
+    String? model,
+    @Default([]) List<ColorProduct> selectedColors,
+    @Default([]) List<SizeRam> selectedRams,
+    @Default([]) List<Storage> selectedStorages,
     @Default(CreateProductStateStatus.initial) CreateProductStateStatus status,
     @Default([]) List<Product> products,
     Product? selectedProduct,

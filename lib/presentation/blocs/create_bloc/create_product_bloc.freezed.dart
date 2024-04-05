@@ -18,8 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CreateProductEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ModelEnum model) onSelectModel,
     required TResult Function(ColorProduct color) onSelectColor,
+    required TResult Function(Storage storage) onSelectStorage,
+    required TResult Function(SizeRam ram) onSelectRam,
     required TResult Function() onSaveProduct,
     required TResult Function(String url) onSelectImageUrl,
     required TResult Function(Product storage) onSelectProduct,
@@ -27,8 +28,9 @@ mixin _$CreateProductEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ModelEnum model)? onSelectModel,
     TResult? Function(ColorProduct color)? onSelectColor,
+    TResult? Function(Storage storage)? onSelectStorage,
+    TResult? Function(SizeRam ram)? onSelectRam,
     TResult? Function()? onSaveProduct,
     TResult? Function(String url)? onSelectImageUrl,
     TResult? Function(Product storage)? onSelectProduct,
@@ -36,8 +38,9 @@ mixin _$CreateProductEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ModelEnum model)? onSelectModel,
     TResult Function(ColorProduct color)? onSelectColor,
+    TResult Function(Storage storage)? onSelectStorage,
+    TResult Function(SizeRam ram)? onSelectRam,
     TResult Function()? onSaveProduct,
     TResult Function(String url)? onSelectImageUrl,
     TResult Function(Product storage)? onSelectProduct,
@@ -46,8 +49,9 @@ mixin _$CreateProductEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SelectModel value) onSelectModel,
     required TResult Function(_SelectColor value) onSelectColor,
+    required TResult Function(_SelectStorage value) onSelectStorage,
+    required TResult Function(_SelectRam value) onSelectRam,
     required TResult Function(_SaveProduct value) onSaveProduct,
     required TResult Function(_SelectUrl value) onSelectImageUrl,
     required TResult Function(_SelectProduct value) onSelectProduct,
@@ -55,8 +59,9 @@ mixin _$CreateProductEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SelectModel value)? onSelectModel,
     TResult? Function(_SelectColor value)? onSelectColor,
+    TResult? Function(_SelectStorage value)? onSelectStorage,
+    TResult? Function(_SelectRam value)? onSelectRam,
     TResult? Function(_SaveProduct value)? onSaveProduct,
     TResult? Function(_SelectUrl value)? onSelectImageUrl,
     TResult? Function(_SelectProduct value)? onSelectProduct,
@@ -64,8 +69,9 @@ mixin _$CreateProductEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SelectModel value)? onSelectModel,
     TResult Function(_SelectColor value)? onSelectColor,
+    TResult Function(_SelectStorage value)? onSelectStorage,
+    TResult Function(_SelectRam value)? onSelectRam,
     TResult Function(_SaveProduct value)? onSaveProduct,
     TResult Function(_SelectUrl value)? onSelectImageUrl,
     TResult Function(_SelectProduct value)? onSelectProduct,
@@ -90,157 +96,6 @@ class _$CreateProductEventCopyWithImpl<$Res, $Val extends CreateProductEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$SelectModelImplCopyWith<$Res> {
-  factory _$$SelectModelImplCopyWith(
-          _$SelectModelImpl value, $Res Function(_$SelectModelImpl) then) =
-      __$$SelectModelImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({ModelEnum model});
-}
-
-/// @nodoc
-class __$$SelectModelImplCopyWithImpl<$Res>
-    extends _$CreateProductEventCopyWithImpl<$Res, _$SelectModelImpl>
-    implements _$$SelectModelImplCopyWith<$Res> {
-  __$$SelectModelImplCopyWithImpl(
-      _$SelectModelImpl _value, $Res Function(_$SelectModelImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? model = null,
-  }) {
-    return _then(_$SelectModelImpl(
-      null == model
-          ? _value.model
-          : model // ignore: cast_nullable_to_non_nullable
-              as ModelEnum,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$SelectModelImpl implements _SelectModel {
-  const _$SelectModelImpl(this.model);
-
-  @override
-  final ModelEnum model;
-
-  @override
-  String toString() {
-    return 'CreateProductEvent.onSelectModel(model: $model)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SelectModelImpl &&
-            (identical(other.model, model) || other.model == model));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, model);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SelectModelImplCopyWith<_$SelectModelImpl> get copyWith =>
-      __$$SelectModelImplCopyWithImpl<_$SelectModelImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(ModelEnum model) onSelectModel,
-    required TResult Function(ColorProduct color) onSelectColor,
-    required TResult Function() onSaveProduct,
-    required TResult Function(String url) onSelectImageUrl,
-    required TResult Function(Product storage) onSelectProduct,
-  }) {
-    return onSelectModel(model);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ModelEnum model)? onSelectModel,
-    TResult? Function(ColorProduct color)? onSelectColor,
-    TResult? Function()? onSaveProduct,
-    TResult? Function(String url)? onSelectImageUrl,
-    TResult? Function(Product storage)? onSelectProduct,
-  }) {
-    return onSelectModel?.call(model);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ModelEnum model)? onSelectModel,
-    TResult Function(ColorProduct color)? onSelectColor,
-    TResult Function()? onSaveProduct,
-    TResult Function(String url)? onSelectImageUrl,
-    TResult Function(Product storage)? onSelectProduct,
-    required TResult orElse(),
-  }) {
-    if (onSelectModel != null) {
-      return onSelectModel(model);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_SelectModel value) onSelectModel,
-    required TResult Function(_SelectColor value) onSelectColor,
-    required TResult Function(_SaveProduct value) onSaveProduct,
-    required TResult Function(_SelectUrl value) onSelectImageUrl,
-    required TResult Function(_SelectProduct value) onSelectProduct,
-  }) {
-    return onSelectModel(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SelectModel value)? onSelectModel,
-    TResult? Function(_SelectColor value)? onSelectColor,
-    TResult? Function(_SaveProduct value)? onSaveProduct,
-    TResult? Function(_SelectUrl value)? onSelectImageUrl,
-    TResult? Function(_SelectProduct value)? onSelectProduct,
-  }) {
-    return onSelectModel?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SelectModel value)? onSelectModel,
-    TResult Function(_SelectColor value)? onSelectColor,
-    TResult Function(_SaveProduct value)? onSaveProduct,
-    TResult Function(_SelectUrl value)? onSelectImageUrl,
-    TResult Function(_SelectProduct value)? onSelectProduct,
-    required TResult orElse(),
-  }) {
-    if (onSelectModel != null) {
-      return onSelectModel(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _SelectModel implements CreateProductEvent {
-  const factory _SelectModel(final ModelEnum model) = _$SelectModelImpl;
-
-  ModelEnum get model;
-  @JsonKey(ignore: true)
-  _$$SelectModelImplCopyWith<_$SelectModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -307,8 +162,9 @@ class _$SelectColorImpl implements _SelectColor {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ModelEnum model) onSelectModel,
     required TResult Function(ColorProduct color) onSelectColor,
+    required TResult Function(Storage storage) onSelectStorage,
+    required TResult Function(SizeRam ram) onSelectRam,
     required TResult Function() onSaveProduct,
     required TResult Function(String url) onSelectImageUrl,
     required TResult Function(Product storage) onSelectProduct,
@@ -319,8 +175,9 @@ class _$SelectColorImpl implements _SelectColor {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ModelEnum model)? onSelectModel,
     TResult? Function(ColorProduct color)? onSelectColor,
+    TResult? Function(Storage storage)? onSelectStorage,
+    TResult? Function(SizeRam ram)? onSelectRam,
     TResult? Function()? onSaveProduct,
     TResult? Function(String url)? onSelectImageUrl,
     TResult? Function(Product storage)? onSelectProduct,
@@ -331,8 +188,9 @@ class _$SelectColorImpl implements _SelectColor {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ModelEnum model)? onSelectModel,
     TResult Function(ColorProduct color)? onSelectColor,
+    TResult Function(Storage storage)? onSelectStorage,
+    TResult Function(SizeRam ram)? onSelectRam,
     TResult Function()? onSaveProduct,
     TResult Function(String url)? onSelectImageUrl,
     TResult Function(Product storage)? onSelectProduct,
@@ -347,8 +205,9 @@ class _$SelectColorImpl implements _SelectColor {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SelectModel value) onSelectModel,
     required TResult Function(_SelectColor value) onSelectColor,
+    required TResult Function(_SelectStorage value) onSelectStorage,
+    required TResult Function(_SelectRam value) onSelectRam,
     required TResult Function(_SaveProduct value) onSaveProduct,
     required TResult Function(_SelectUrl value) onSelectImageUrl,
     required TResult Function(_SelectProduct value) onSelectProduct,
@@ -359,8 +218,9 @@ class _$SelectColorImpl implements _SelectColor {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SelectModel value)? onSelectModel,
     TResult? Function(_SelectColor value)? onSelectColor,
+    TResult? Function(_SelectStorage value)? onSelectStorage,
+    TResult? Function(_SelectRam value)? onSelectRam,
     TResult? Function(_SaveProduct value)? onSaveProduct,
     TResult? Function(_SelectUrl value)? onSelectImageUrl,
     TResult? Function(_SelectProduct value)? onSelectProduct,
@@ -371,8 +231,9 @@ class _$SelectColorImpl implements _SelectColor {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SelectModel value)? onSelectModel,
     TResult Function(_SelectColor value)? onSelectColor,
+    TResult Function(_SelectStorage value)? onSelectStorage,
+    TResult Function(_SelectRam value)? onSelectRam,
     TResult Function(_SaveProduct value)? onSaveProduct,
     TResult Function(_SelectUrl value)? onSelectImageUrl,
     TResult Function(_SelectProduct value)? onSelectProduct,
@@ -391,6 +252,320 @@ abstract class _SelectColor implements CreateProductEvent {
   ColorProduct get color;
   @JsonKey(ignore: true)
   _$$SelectColorImplCopyWith<_$SelectColorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SelectStorageImplCopyWith<$Res> {
+  factory _$$SelectStorageImplCopyWith(
+          _$SelectStorageImpl value, $Res Function(_$SelectStorageImpl) then) =
+      __$$SelectStorageImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Storage storage});
+}
+
+/// @nodoc
+class __$$SelectStorageImplCopyWithImpl<$Res>
+    extends _$CreateProductEventCopyWithImpl<$Res, _$SelectStorageImpl>
+    implements _$$SelectStorageImplCopyWith<$Res> {
+  __$$SelectStorageImplCopyWithImpl(
+      _$SelectStorageImpl _value, $Res Function(_$SelectStorageImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? storage = null,
+  }) {
+    return _then(_$SelectStorageImpl(
+      null == storage
+          ? _value.storage
+          : storage // ignore: cast_nullable_to_non_nullable
+              as Storage,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SelectStorageImpl implements _SelectStorage {
+  const _$SelectStorageImpl(this.storage);
+
+  @override
+  final Storage storage;
+
+  @override
+  String toString() {
+    return 'CreateProductEvent.onSelectStorage(storage: $storage)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SelectStorageImpl &&
+            (identical(other.storage, storage) || other.storage == storage));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, storage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SelectStorageImplCopyWith<_$SelectStorageImpl> get copyWith =>
+      __$$SelectStorageImplCopyWithImpl<_$SelectStorageImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ColorProduct color) onSelectColor,
+    required TResult Function(Storage storage) onSelectStorage,
+    required TResult Function(SizeRam ram) onSelectRam,
+    required TResult Function() onSaveProduct,
+    required TResult Function(String url) onSelectImageUrl,
+    required TResult Function(Product storage) onSelectProduct,
+  }) {
+    return onSelectStorage(storage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ColorProduct color)? onSelectColor,
+    TResult? Function(Storage storage)? onSelectStorage,
+    TResult? Function(SizeRam ram)? onSelectRam,
+    TResult? Function()? onSaveProduct,
+    TResult? Function(String url)? onSelectImageUrl,
+    TResult? Function(Product storage)? onSelectProduct,
+  }) {
+    return onSelectStorage?.call(storage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ColorProduct color)? onSelectColor,
+    TResult Function(Storage storage)? onSelectStorage,
+    TResult Function(SizeRam ram)? onSelectRam,
+    TResult Function()? onSaveProduct,
+    TResult Function(String url)? onSelectImageUrl,
+    TResult Function(Product storage)? onSelectProduct,
+    required TResult orElse(),
+  }) {
+    if (onSelectStorage != null) {
+      return onSelectStorage(storage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SelectColor value) onSelectColor,
+    required TResult Function(_SelectStorage value) onSelectStorage,
+    required TResult Function(_SelectRam value) onSelectRam,
+    required TResult Function(_SaveProduct value) onSaveProduct,
+    required TResult Function(_SelectUrl value) onSelectImageUrl,
+    required TResult Function(_SelectProduct value) onSelectProduct,
+  }) {
+    return onSelectStorage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SelectColor value)? onSelectColor,
+    TResult? Function(_SelectStorage value)? onSelectStorage,
+    TResult? Function(_SelectRam value)? onSelectRam,
+    TResult? Function(_SaveProduct value)? onSaveProduct,
+    TResult? Function(_SelectUrl value)? onSelectImageUrl,
+    TResult? Function(_SelectProduct value)? onSelectProduct,
+  }) {
+    return onSelectStorage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SelectColor value)? onSelectColor,
+    TResult Function(_SelectStorage value)? onSelectStorage,
+    TResult Function(_SelectRam value)? onSelectRam,
+    TResult Function(_SaveProduct value)? onSaveProduct,
+    TResult Function(_SelectUrl value)? onSelectImageUrl,
+    TResult Function(_SelectProduct value)? onSelectProduct,
+    required TResult orElse(),
+  }) {
+    if (onSelectStorage != null) {
+      return onSelectStorage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SelectStorage implements CreateProductEvent {
+  const factory _SelectStorage(final Storage storage) = _$SelectStorageImpl;
+
+  Storage get storage;
+  @JsonKey(ignore: true)
+  _$$SelectStorageImplCopyWith<_$SelectStorageImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SelectRamImplCopyWith<$Res> {
+  factory _$$SelectRamImplCopyWith(
+          _$SelectRamImpl value, $Res Function(_$SelectRamImpl) then) =
+      __$$SelectRamImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({SizeRam ram});
+}
+
+/// @nodoc
+class __$$SelectRamImplCopyWithImpl<$Res>
+    extends _$CreateProductEventCopyWithImpl<$Res, _$SelectRamImpl>
+    implements _$$SelectRamImplCopyWith<$Res> {
+  __$$SelectRamImplCopyWithImpl(
+      _$SelectRamImpl _value, $Res Function(_$SelectRamImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ram = null,
+  }) {
+    return _then(_$SelectRamImpl(
+      null == ram
+          ? _value.ram
+          : ram // ignore: cast_nullable_to_non_nullable
+              as SizeRam,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SelectRamImpl implements _SelectRam {
+  const _$SelectRamImpl(this.ram);
+
+  @override
+  final SizeRam ram;
+
+  @override
+  String toString() {
+    return 'CreateProductEvent.onSelectRam(ram: $ram)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SelectRamImpl &&
+            (identical(other.ram, ram) || other.ram == ram));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, ram);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SelectRamImplCopyWith<_$SelectRamImpl> get copyWith =>
+      __$$SelectRamImplCopyWithImpl<_$SelectRamImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ColorProduct color) onSelectColor,
+    required TResult Function(Storage storage) onSelectStorage,
+    required TResult Function(SizeRam ram) onSelectRam,
+    required TResult Function() onSaveProduct,
+    required TResult Function(String url) onSelectImageUrl,
+    required TResult Function(Product storage) onSelectProduct,
+  }) {
+    return onSelectRam(ram);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ColorProduct color)? onSelectColor,
+    TResult? Function(Storage storage)? onSelectStorage,
+    TResult? Function(SizeRam ram)? onSelectRam,
+    TResult? Function()? onSaveProduct,
+    TResult? Function(String url)? onSelectImageUrl,
+    TResult? Function(Product storage)? onSelectProduct,
+  }) {
+    return onSelectRam?.call(ram);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ColorProduct color)? onSelectColor,
+    TResult Function(Storage storage)? onSelectStorage,
+    TResult Function(SizeRam ram)? onSelectRam,
+    TResult Function()? onSaveProduct,
+    TResult Function(String url)? onSelectImageUrl,
+    TResult Function(Product storage)? onSelectProduct,
+    required TResult orElse(),
+  }) {
+    if (onSelectRam != null) {
+      return onSelectRam(ram);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SelectColor value) onSelectColor,
+    required TResult Function(_SelectStorage value) onSelectStorage,
+    required TResult Function(_SelectRam value) onSelectRam,
+    required TResult Function(_SaveProduct value) onSaveProduct,
+    required TResult Function(_SelectUrl value) onSelectImageUrl,
+    required TResult Function(_SelectProduct value) onSelectProduct,
+  }) {
+    return onSelectRam(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SelectColor value)? onSelectColor,
+    TResult? Function(_SelectStorage value)? onSelectStorage,
+    TResult? Function(_SelectRam value)? onSelectRam,
+    TResult? Function(_SaveProduct value)? onSaveProduct,
+    TResult? Function(_SelectUrl value)? onSelectImageUrl,
+    TResult? Function(_SelectProduct value)? onSelectProduct,
+  }) {
+    return onSelectRam?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SelectColor value)? onSelectColor,
+    TResult Function(_SelectStorage value)? onSelectStorage,
+    TResult Function(_SelectRam value)? onSelectRam,
+    TResult Function(_SaveProduct value)? onSaveProduct,
+    TResult Function(_SelectUrl value)? onSelectImageUrl,
+    TResult Function(_SelectProduct value)? onSelectProduct,
+    required TResult orElse(),
+  }) {
+    if (onSelectRam != null) {
+      return onSelectRam(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SelectRam implements CreateProductEvent {
+  const factory _SelectRam(final SizeRam ram) = _$SelectRamImpl;
+
+  SizeRam get ram;
+  @JsonKey(ignore: true)
+  _$$SelectRamImplCopyWith<_$SelectRamImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -432,8 +607,9 @@ class _$SaveProductImpl implements _SaveProduct {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ModelEnum model) onSelectModel,
     required TResult Function(ColorProduct color) onSelectColor,
+    required TResult Function(Storage storage) onSelectStorage,
+    required TResult Function(SizeRam ram) onSelectRam,
     required TResult Function() onSaveProduct,
     required TResult Function(String url) onSelectImageUrl,
     required TResult Function(Product storage) onSelectProduct,
@@ -444,8 +620,9 @@ class _$SaveProductImpl implements _SaveProduct {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ModelEnum model)? onSelectModel,
     TResult? Function(ColorProduct color)? onSelectColor,
+    TResult? Function(Storage storage)? onSelectStorage,
+    TResult? Function(SizeRam ram)? onSelectRam,
     TResult? Function()? onSaveProduct,
     TResult? Function(String url)? onSelectImageUrl,
     TResult? Function(Product storage)? onSelectProduct,
@@ -456,8 +633,9 @@ class _$SaveProductImpl implements _SaveProduct {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ModelEnum model)? onSelectModel,
     TResult Function(ColorProduct color)? onSelectColor,
+    TResult Function(Storage storage)? onSelectStorage,
+    TResult Function(SizeRam ram)? onSelectRam,
     TResult Function()? onSaveProduct,
     TResult Function(String url)? onSelectImageUrl,
     TResult Function(Product storage)? onSelectProduct,
@@ -472,8 +650,9 @@ class _$SaveProductImpl implements _SaveProduct {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SelectModel value) onSelectModel,
     required TResult Function(_SelectColor value) onSelectColor,
+    required TResult Function(_SelectStorage value) onSelectStorage,
+    required TResult Function(_SelectRam value) onSelectRam,
     required TResult Function(_SaveProduct value) onSaveProduct,
     required TResult Function(_SelectUrl value) onSelectImageUrl,
     required TResult Function(_SelectProduct value) onSelectProduct,
@@ -484,8 +663,9 @@ class _$SaveProductImpl implements _SaveProduct {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SelectModel value)? onSelectModel,
     TResult? Function(_SelectColor value)? onSelectColor,
+    TResult? Function(_SelectStorage value)? onSelectStorage,
+    TResult? Function(_SelectRam value)? onSelectRam,
     TResult? Function(_SaveProduct value)? onSaveProduct,
     TResult? Function(_SelectUrl value)? onSelectImageUrl,
     TResult? Function(_SelectProduct value)? onSelectProduct,
@@ -496,8 +676,9 @@ class _$SaveProductImpl implements _SaveProduct {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SelectModel value)? onSelectModel,
     TResult Function(_SelectColor value)? onSelectColor,
+    TResult Function(_SelectStorage value)? onSelectStorage,
+    TResult Function(_SelectRam value)? onSelectRam,
     TResult Function(_SaveProduct value)? onSaveProduct,
     TResult Function(_SelectUrl value)? onSelectImageUrl,
     TResult Function(_SelectProduct value)? onSelectProduct,
@@ -578,8 +759,9 @@ class _$SelectUrlImpl implements _SelectUrl {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ModelEnum model) onSelectModel,
     required TResult Function(ColorProduct color) onSelectColor,
+    required TResult Function(Storage storage) onSelectStorage,
+    required TResult Function(SizeRam ram) onSelectRam,
     required TResult Function() onSaveProduct,
     required TResult Function(String url) onSelectImageUrl,
     required TResult Function(Product storage) onSelectProduct,
@@ -590,8 +772,9 @@ class _$SelectUrlImpl implements _SelectUrl {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ModelEnum model)? onSelectModel,
     TResult? Function(ColorProduct color)? onSelectColor,
+    TResult? Function(Storage storage)? onSelectStorage,
+    TResult? Function(SizeRam ram)? onSelectRam,
     TResult? Function()? onSaveProduct,
     TResult? Function(String url)? onSelectImageUrl,
     TResult? Function(Product storage)? onSelectProduct,
@@ -602,8 +785,9 @@ class _$SelectUrlImpl implements _SelectUrl {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ModelEnum model)? onSelectModel,
     TResult Function(ColorProduct color)? onSelectColor,
+    TResult Function(Storage storage)? onSelectStorage,
+    TResult Function(SizeRam ram)? onSelectRam,
     TResult Function()? onSaveProduct,
     TResult Function(String url)? onSelectImageUrl,
     TResult Function(Product storage)? onSelectProduct,
@@ -618,8 +802,9 @@ class _$SelectUrlImpl implements _SelectUrl {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SelectModel value) onSelectModel,
     required TResult Function(_SelectColor value) onSelectColor,
+    required TResult Function(_SelectStorage value) onSelectStorage,
+    required TResult Function(_SelectRam value) onSelectRam,
     required TResult Function(_SaveProduct value) onSaveProduct,
     required TResult Function(_SelectUrl value) onSelectImageUrl,
     required TResult Function(_SelectProduct value) onSelectProduct,
@@ -630,8 +815,9 @@ class _$SelectUrlImpl implements _SelectUrl {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SelectModel value)? onSelectModel,
     TResult? Function(_SelectColor value)? onSelectColor,
+    TResult? Function(_SelectStorage value)? onSelectStorage,
+    TResult? Function(_SelectRam value)? onSelectRam,
     TResult? Function(_SaveProduct value)? onSaveProduct,
     TResult? Function(_SelectUrl value)? onSelectImageUrl,
     TResult? Function(_SelectProduct value)? onSelectProduct,
@@ -642,8 +828,9 @@ class _$SelectUrlImpl implements _SelectUrl {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SelectModel value)? onSelectModel,
     TResult Function(_SelectColor value)? onSelectColor,
+    TResult Function(_SelectStorage value)? onSelectStorage,
+    TResult Function(_SelectRam value)? onSelectRam,
     TResult Function(_SaveProduct value)? onSaveProduct,
     TResult Function(_SelectUrl value)? onSelectImageUrl,
     TResult Function(_SelectProduct value)? onSelectProduct,
@@ -739,8 +926,9 @@ class _$SelectProductImpl implements _SelectProduct {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ModelEnum model) onSelectModel,
     required TResult Function(ColorProduct color) onSelectColor,
+    required TResult Function(Storage storage) onSelectStorage,
+    required TResult Function(SizeRam ram) onSelectRam,
     required TResult Function() onSaveProduct,
     required TResult Function(String url) onSelectImageUrl,
     required TResult Function(Product storage) onSelectProduct,
@@ -751,8 +939,9 @@ class _$SelectProductImpl implements _SelectProduct {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ModelEnum model)? onSelectModel,
     TResult? Function(ColorProduct color)? onSelectColor,
+    TResult? Function(Storage storage)? onSelectStorage,
+    TResult? Function(SizeRam ram)? onSelectRam,
     TResult? Function()? onSaveProduct,
     TResult? Function(String url)? onSelectImageUrl,
     TResult? Function(Product storage)? onSelectProduct,
@@ -763,8 +952,9 @@ class _$SelectProductImpl implements _SelectProduct {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ModelEnum model)? onSelectModel,
     TResult Function(ColorProduct color)? onSelectColor,
+    TResult Function(Storage storage)? onSelectStorage,
+    TResult Function(SizeRam ram)? onSelectRam,
     TResult Function()? onSaveProduct,
     TResult Function(String url)? onSelectImageUrl,
     TResult Function(Product storage)? onSelectProduct,
@@ -779,8 +969,9 @@ class _$SelectProductImpl implements _SelectProduct {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SelectModel value) onSelectModel,
     required TResult Function(_SelectColor value) onSelectColor,
+    required TResult Function(_SelectStorage value) onSelectStorage,
+    required TResult Function(_SelectRam value) onSelectRam,
     required TResult Function(_SaveProduct value) onSaveProduct,
     required TResult Function(_SelectUrl value) onSelectImageUrl,
     required TResult Function(_SelectProduct value) onSelectProduct,
@@ -791,8 +982,9 @@ class _$SelectProductImpl implements _SelectProduct {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SelectModel value)? onSelectModel,
     TResult? Function(_SelectColor value)? onSelectColor,
+    TResult? Function(_SelectStorage value)? onSelectStorage,
+    TResult? Function(_SelectRam value)? onSelectRam,
     TResult? Function(_SaveProduct value)? onSaveProduct,
     TResult? Function(_SelectUrl value)? onSelectImageUrl,
     TResult? Function(_SelectProduct value)? onSelectProduct,
@@ -803,8 +995,9 @@ class _$SelectProductImpl implements _SelectProduct {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SelectModel value)? onSelectModel,
     TResult Function(_SelectColor value)? onSelectColor,
+    TResult Function(_SelectStorage value)? onSelectStorage,
+    TResult Function(_SelectRam value)? onSelectRam,
     TResult Function(_SaveProduct value)? onSaveProduct,
     TResult Function(_SelectUrl value)? onSelectImageUrl,
     TResult Function(_SelectProduct value)? onSelectProduct,
@@ -828,8 +1021,10 @@ abstract class _SelectProduct implements CreateProductEvent {
 
 /// @nodoc
 mixin _$CreateProductState {
-  ModelEnum get model => throw _privateConstructorUsedError;
-  ColorProduct get color => throw _privateConstructorUsedError;
+  String? get model => throw _privateConstructorUsedError;
+  List<ColorProduct> get selectedColors => throw _privateConstructorUsedError;
+  List<SizeRam> get selectedRams => throw _privateConstructorUsedError;
+  List<Storage> get selectedStorages => throw _privateConstructorUsedError;
   CreateProductStateStatus get status => throw _privateConstructorUsedError;
   List<Product> get products => throw _privateConstructorUsedError;
   Product? get selectedProduct => throw _privateConstructorUsedError;
@@ -848,8 +1043,10 @@ abstract class $CreateProductStateCopyWith<$Res> {
       _$CreateProductStateCopyWithImpl<$Res, CreateProductState>;
   @useResult
   $Res call(
-      {ModelEnum model,
-      ColorProduct color,
+      {String? model,
+      List<ColorProduct> selectedColors,
+      List<SizeRam> selectedRams,
+      List<Storage> selectedStorages,
       CreateProductStateStatus status,
       List<Product> products,
       Product? selectedProduct,
@@ -872,8 +1069,10 @@ class _$CreateProductStateCopyWithImpl<$Res, $Val extends CreateProductState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? model = null,
-    Object? color = null,
+    Object? model = freezed,
+    Object? selectedColors = null,
+    Object? selectedRams = null,
+    Object? selectedStorages = null,
     Object? status = null,
     Object? products = null,
     Object? selectedProduct = freezed,
@@ -881,14 +1080,22 @@ class _$CreateProductStateCopyWithImpl<$Res, $Val extends CreateProductState>
     Object? error = freezed,
   }) {
     return _then(_value.copyWith(
-      model: null == model
+      model: freezed == model
           ? _value.model
           : model // ignore: cast_nullable_to_non_nullable
-              as ModelEnum,
-      color: null == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as ColorProduct,
+              as String?,
+      selectedColors: null == selectedColors
+          ? _value.selectedColors
+          : selectedColors // ignore: cast_nullable_to_non_nullable
+              as List<ColorProduct>,
+      selectedRams: null == selectedRams
+          ? _value.selectedRams
+          : selectedRams // ignore: cast_nullable_to_non_nullable
+              as List<SizeRam>,
+      selectedStorages: null == selectedStorages
+          ? _value.selectedStorages
+          : selectedStorages // ignore: cast_nullable_to_non_nullable
+              as List<Storage>,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -931,8 +1138,10 @@ abstract class _$$CreateProductStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {ModelEnum model,
-      ColorProduct color,
+      {String? model,
+      List<ColorProduct> selectedColors,
+      List<SizeRam> selectedRams,
+      List<Storage> selectedStorages,
       CreateProductStateStatus status,
       List<Product> products,
       Product? selectedProduct,
@@ -954,8 +1163,10 @@ class __$$CreateProductStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? model = null,
-    Object? color = null,
+    Object? model = freezed,
+    Object? selectedColors = null,
+    Object? selectedRams = null,
+    Object? selectedStorages = null,
     Object? status = null,
     Object? products = null,
     Object? selectedProduct = freezed,
@@ -963,14 +1174,22 @@ class __$$CreateProductStateImplCopyWithImpl<$Res>
     Object? error = freezed,
   }) {
     return _then(_$CreateProductStateImpl(
-      model: null == model
+      model: freezed == model
           ? _value.model
           : model // ignore: cast_nullable_to_non_nullable
-              as ModelEnum,
-      color: null == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as ColorProduct,
+              as String?,
+      selectedColors: null == selectedColors
+          ? _value._selectedColors
+          : selectedColors // ignore: cast_nullable_to_non_nullable
+              as List<ColorProduct>,
+      selectedRams: null == selectedRams
+          ? _value._selectedRams
+          : selectedRams // ignore: cast_nullable_to_non_nullable
+              as List<SizeRam>,
+      selectedStorages: null == selectedStorages
+          ? _value._selectedStorages
+          : selectedStorages // ignore: cast_nullable_to_non_nullable
+              as List<Storage>,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -996,21 +1215,50 @@ class __$$CreateProductStateImplCopyWithImpl<$Res>
 
 class _$CreateProductStateImpl implements _CreateProductState {
   const _$CreateProductStateImpl(
-      {this.model = ModelEnum.m1pro,
-      this.color = ColorProduct.black,
+      {this.model,
+      final List<ColorProduct> selectedColors = const [],
+      final List<SizeRam> selectedRams = const [],
+      final List<Storage> selectedStorages = const [],
       this.status = CreateProductStateStatus.initial,
       final List<Product> products = const [],
       this.selectedProduct,
       this.imageUrl,
       this.error})
-      : _products = products;
+      : _selectedColors = selectedColors,
+        _selectedRams = selectedRams,
+        _selectedStorages = selectedStorages,
+        _products = products;
 
   @override
-  @JsonKey()
-  final ModelEnum model;
+  final String? model;
+  final List<ColorProduct> _selectedColors;
   @override
   @JsonKey()
-  final ColorProduct color;
+  List<ColorProduct> get selectedColors {
+    if (_selectedColors is EqualUnmodifiableListView) return _selectedColors;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_selectedColors);
+  }
+
+  final List<SizeRam> _selectedRams;
+  @override
+  @JsonKey()
+  List<SizeRam> get selectedRams {
+    if (_selectedRams is EqualUnmodifiableListView) return _selectedRams;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_selectedRams);
+  }
+
+  final List<Storage> _selectedStorages;
+  @override
+  @JsonKey()
+  List<Storage> get selectedStorages {
+    if (_selectedStorages is EqualUnmodifiableListView)
+      return _selectedStorages;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_selectedStorages);
+  }
+
   @override
   @JsonKey()
   final CreateProductStateStatus status;
@@ -1032,7 +1280,7 @@ class _$CreateProductStateImpl implements _CreateProductState {
 
   @override
   String toString() {
-    return 'CreateProductState(model: $model, color: $color, status: $status, products: $products, selectedProduct: $selectedProduct, imageUrl: $imageUrl, error: $error)';
+    return 'CreateProductState(model: $model, selectedColors: $selectedColors, selectedRams: $selectedRams, selectedStorages: $selectedStorages, status: $status, products: $products, selectedProduct: $selectedProduct, imageUrl: $imageUrl, error: $error)';
   }
 
   @override
@@ -1041,7 +1289,12 @@ class _$CreateProductStateImpl implements _CreateProductState {
         (other.runtimeType == runtimeType &&
             other is _$CreateProductStateImpl &&
             (identical(other.model, model) || other.model == model) &&
-            (identical(other.color, color) || other.color == color) &&
+            const DeepCollectionEquality()
+                .equals(other._selectedColors, _selectedColors) &&
+            const DeepCollectionEquality()
+                .equals(other._selectedRams, _selectedRams) &&
+            const DeepCollectionEquality()
+                .equals(other._selectedStorages, _selectedStorages) &&
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality().equals(other._products, _products) &&
             (identical(other.selectedProduct, selectedProduct) ||
@@ -1055,7 +1308,9 @@ class _$CreateProductStateImpl implements _CreateProductState {
   int get hashCode => Object.hash(
       runtimeType,
       model,
-      color,
+      const DeepCollectionEquality().hash(_selectedColors),
+      const DeepCollectionEquality().hash(_selectedRams),
+      const DeepCollectionEquality().hash(_selectedStorages),
       status,
       const DeepCollectionEquality().hash(_products),
       selectedProduct,
@@ -1072,8 +1327,10 @@ class _$CreateProductStateImpl implements _CreateProductState {
 
 abstract class _CreateProductState implements CreateProductState {
   const factory _CreateProductState(
-      {final ModelEnum model,
-      final ColorProduct color,
+      {final String? model,
+      final List<ColorProduct> selectedColors,
+      final List<SizeRam> selectedRams,
+      final List<Storage> selectedStorages,
       final CreateProductStateStatus status,
       final List<Product> products,
       final Product? selectedProduct,
@@ -1081,9 +1338,13 @@ abstract class _CreateProductState implements CreateProductState {
       final Object? error}) = _$CreateProductStateImpl;
 
   @override
-  ModelEnum get model;
+  String? get model;
   @override
-  ColorProduct get color;
+  List<ColorProduct> get selectedColors;
+  @override
+  List<SizeRam> get selectedRams;
+  @override
+  List<Storage> get selectedStorages;
   @override
   CreateProductStateStatus get status;
   @override

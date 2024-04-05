@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/core/di/locator.dart';
 import 'package:flutter_application/presentation/blocs/create_bloc/create_product_bloc.dart';
-import 'package:flutter_application/presentation/views/create_product/randomize_product.dart';
+import 'package:flutter_application/presentation/views/create_product/ram_selector.dart';
 import 'package:flutter_application/presentation/views/products_list/products_view.dart';
 import 'package:flutter_application/presentation/views/upload_image/upload_horizontal_widget.dart';
 import 'package:flutter_application/service/models/color_enum.dart';
-import 'package:flutter_application/service/models/model_enum.dart';
+import 'package:flutter_application/service/models/memory_enum.dart';
+import 'package:flutter_application/service/models/size_enum.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'color_selector.dart';
-import 'model_selector.dart';
+import 'memory_selector.dart';
 
 class CreateProductView extends StatelessWidget {
   const CreateProductView({super.key});
@@ -64,8 +65,20 @@ class _CreateProductPageState extends State<_CreateProductPage> {
   }
 }
 
-class _CreateProductBody extends StatelessWidget {
+class _CreateProductBody extends StatefulWidget {
   const _CreateProductBody({super.key});
+
+  @override
+  State<_CreateProductBody> createState() => _CreateProductBodyState();
+}
+
+class _CreateProductBodyState extends State<_CreateProductBody> {
+  final TextEditingController _nameController = TextEditingController();
+  @override
+  void dispose() {
+    _nameController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,42 +93,55 @@ class _CreateProductBody extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               if (bloc.state.status == CreateProductStateStatus.initial) ...[
-                BlocSelector<CreateProductBloc, CreateProductState, ModelEnum>(
-                    bloc: bloc,
-                    selector: (state) => state.model,
-                    builder: (context, model) {
-                      return ModelSelectorView(model: model);
-                    }),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: TextField(
+                    controller: _nameController,
+                    decoration: const InputDecoration(
+                      labelText: 'Name',
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const UploadHorizontalWidget(),
                 const SizedBox(
                   height: 20,
                 ),
                 BlocSelector<CreateProductBloc, CreateProductState,
-                        ColorProduct>(
+                        List<ColorProduct>>(
                     bloc: bloc,
-                    selector: (state) => state.color,
-                    builder: (context, color) {
+                    selector: (state) => state.selectedColors,
+                    builder: (context, colors) {
                       return ColorSelectorView(
-                        color: color,
+                        selectedColors: colors,
                       );
                     }),
                 const SizedBox(
                   height: 20,
                 ),
-
-              BlocBuilder<CreateProductBloc, CreateProductState>(
-                buildWhen: (previous, current) =>
-                (previous.model != current.model) ||(previous.color != current.color)|| (previous.selectedProduct != current.selectedProduct),
-                  builder: (ctx,state){
-                     return RandomizeProduct(products: state.products.where((product) => product.model==state.model && product.color==state.color,).toList(),
-                     id: state.selectedProduct?.id,
-                     );
-                  }
-              ),
-
+                BlocSelector<CreateProductBloc, CreateProductState,
+                        List<Storage>>(
+                    bloc: bloc,
+                    selector: (state) => state.selectedStorages,
+                    builder: (context, storages) {
+                      return MemorySelectorView(
+                        storages: storages,
+                      );
+                    }),
                 const SizedBox(
                   height: 20,
                 ),
-                const UploadHorizontalWidget(),
+                BlocSelector<CreateProductBloc, CreateProductState,
+                        List<SizeRam>>(
+                    bloc: bloc,
+                    selector: (state) => state.selectedRams,
+                    builder: (context, rams) {
+                      return RamSelectorView(
+                        rams: rams,
+                      );
+                    }),
                 const SizedBox(
                   height: 20,
                 ),

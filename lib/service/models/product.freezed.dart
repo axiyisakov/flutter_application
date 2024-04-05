@@ -23,15 +23,17 @@ mixin _$Product {
   @HiveField(0)
   String get id => throw _privateConstructorUsedError;
   @HiveField(1)
-  ModelEnum get model => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   @HiveField(2)
-  ColorProduct get color => throw _privateConstructorUsedError;
+  List<ColorProduct> get colors => throw _privateConstructorUsedError;
   @HiveField(3)
-  SizeRam get ram => throw _privateConstructorUsedError;
+  List<SizeRam> get rams => throw _privateConstructorUsedError;
   @HiveField(4)
-  Storage get storage => throw _privateConstructorUsedError;
+  List<Storage> get storages => throw _privateConstructorUsedError;
   @HiveField(5)
   String? get imagePath => throw _privateConstructorUsedError;
+  @HiveField(6)
+  List<Product> get similarProducts => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,11 +47,12 @@ abstract class $ProductCopyWith<$Res> {
   @useResult
   $Res call(
       {@HiveField(0) String id,
-      @HiveField(1) ModelEnum model,
-      @HiveField(2) ColorProduct color,
-      @HiveField(3) SizeRam ram,
-      @HiveField(4) Storage storage,
-      @HiveField(5) String? imagePath});
+      @HiveField(1) String name,
+      @HiveField(2) List<ColorProduct> colors,
+      @HiveField(3) List<SizeRam> rams,
+      @HiveField(4) List<Storage> storages,
+      @HiveField(5) String? imagePath,
+      @HiveField(6) List<Product> similarProducts});
 }
 
 /// @nodoc
@@ -66,37 +69,42 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   @override
   $Res call({
     Object? id = null,
-    Object? model = null,
-    Object? color = null,
-    Object? ram = null,
-    Object? storage = null,
+    Object? name = null,
+    Object? colors = null,
+    Object? rams = null,
+    Object? storages = null,
     Object? imagePath = freezed,
+    Object? similarProducts = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      model: null == model
-          ? _value.model
-          : model // ignore: cast_nullable_to_non_nullable
-              as ModelEnum,
-      color: null == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as ColorProduct,
-      ram: null == ram
-          ? _value.ram
-          : ram // ignore: cast_nullable_to_non_nullable
-              as SizeRam,
-      storage: null == storage
-          ? _value.storage
-          : storage // ignore: cast_nullable_to_non_nullable
-              as Storage,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      colors: null == colors
+          ? _value.colors
+          : colors // ignore: cast_nullable_to_non_nullable
+              as List<ColorProduct>,
+      rams: null == rams
+          ? _value.rams
+          : rams // ignore: cast_nullable_to_non_nullable
+              as List<SizeRam>,
+      storages: null == storages
+          ? _value.storages
+          : storages // ignore: cast_nullable_to_non_nullable
+              as List<Storage>,
       imagePath: freezed == imagePath
           ? _value.imagePath
           : imagePath // ignore: cast_nullable_to_non_nullable
               as String?,
+      similarProducts: null == similarProducts
+          ? _value.similarProducts
+          : similarProducts // ignore: cast_nullable_to_non_nullable
+              as List<Product>,
     ) as $Val);
   }
 }
@@ -110,11 +118,12 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
   @useResult
   $Res call(
       {@HiveField(0) String id,
-      @HiveField(1) ModelEnum model,
-      @HiveField(2) ColorProduct color,
-      @HiveField(3) SizeRam ram,
-      @HiveField(4) Storage storage,
-      @HiveField(5) String? imagePath});
+      @HiveField(1) String name,
+      @HiveField(2) List<ColorProduct> colors,
+      @HiveField(3) List<SizeRam> rams,
+      @HiveField(4) List<Storage> storages,
+      @HiveField(5) String? imagePath,
+      @HiveField(6) List<Product> similarProducts});
 }
 
 /// @nodoc
@@ -129,37 +138,42 @@ class __$$ProductImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? model = null,
-    Object? color = null,
-    Object? ram = null,
-    Object? storage = null,
+    Object? name = null,
+    Object? colors = null,
+    Object? rams = null,
+    Object? storages = null,
     Object? imagePath = freezed,
+    Object? similarProducts = null,
   }) {
     return _then(_$ProductImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      model: null == model
-          ? _value.model
-          : model // ignore: cast_nullable_to_non_nullable
-              as ModelEnum,
-      color: null == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as ColorProduct,
-      ram: null == ram
-          ? _value.ram
-          : ram // ignore: cast_nullable_to_non_nullable
-              as SizeRam,
-      storage: null == storage
-          ? _value.storage
-          : storage // ignore: cast_nullable_to_non_nullable
-              as Storage,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      colors: null == colors
+          ? _value._colors
+          : colors // ignore: cast_nullable_to_non_nullable
+              as List<ColorProduct>,
+      rams: null == rams
+          ? _value._rams
+          : rams // ignore: cast_nullable_to_non_nullable
+              as List<SizeRam>,
+      storages: null == storages
+          ? _value._storages
+          : storages // ignore: cast_nullable_to_non_nullable
+              as List<Storage>,
       imagePath: freezed == imagePath
           ? _value.imagePath
           : imagePath // ignore: cast_nullable_to_non_nullable
               as String?,
+      similarProducts: null == similarProducts
+          ? _value._similarProducts
+          : similarProducts // ignore: cast_nullable_to_non_nullable
+              as List<Product>,
     ));
   }
 }
@@ -169,11 +183,16 @@ class __$$ProductImplCopyWithImpl<$Res>
 class _$ProductImpl implements _Product {
   const _$ProductImpl(
       {@HiveField(0) required this.id,
-      @HiveField(1) required this.model,
-      @HiveField(2) required this.color,
-      @HiveField(3) required this.ram,
-      @HiveField(4) required this.storage,
-      @HiveField(5) this.imagePath});
+      @HiveField(1) required this.name,
+      @HiveField(2) required final List<ColorProduct> colors,
+      @HiveField(3) required final List<SizeRam> rams,
+      @HiveField(4) required final List<Storage> storages,
+      @HiveField(5) this.imagePath,
+      @HiveField(6) final List<Product> similarProducts = const []})
+      : _colors = colors,
+        _rams = rams,
+        _storages = storages,
+        _similarProducts = similarProducts;
 
   factory _$ProductImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductImplFromJson(json);
@@ -183,23 +202,50 @@ class _$ProductImpl implements _Product {
   final String id;
   @override
   @HiveField(1)
-  final ModelEnum model;
+  final String name;
+  final List<ColorProduct> _colors;
   @override
   @HiveField(2)
-  final ColorProduct color;
+  List<ColorProduct> get colors {
+    if (_colors is EqualUnmodifiableListView) return _colors;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_colors);
+  }
+
+  final List<SizeRam> _rams;
   @override
   @HiveField(3)
-  final SizeRam ram;
+  List<SizeRam> get rams {
+    if (_rams is EqualUnmodifiableListView) return _rams;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_rams);
+  }
+
+  final List<Storage> _storages;
   @override
   @HiveField(4)
-  final Storage storage;
+  List<Storage> get storages {
+    if (_storages is EqualUnmodifiableListView) return _storages;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_storages);
+  }
+
   @override
   @HiveField(5)
   final String? imagePath;
+  final List<Product> _similarProducts;
+  @override
+  @JsonKey()
+  @HiveField(6)
+  List<Product> get similarProducts {
+    if (_similarProducts is EqualUnmodifiableListView) return _similarProducts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_similarProducts);
+  }
 
   @override
   String toString() {
-    return 'Product(id: $id, model: $model, color: $color, ram: $ram, storage: $storage, imagePath: $imagePath)';
+    return 'Product(id: $id, name: $name, colors: $colors, rams: $rams, storages: $storages, imagePath: $imagePath, similarProducts: $similarProducts)';
   }
 
   @override
@@ -208,18 +254,27 @@ class _$ProductImpl implements _Product {
         (other.runtimeType == runtimeType &&
             other is _$ProductImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.model, model) || other.model == model) &&
-            (identical(other.color, color) || other.color == color) &&
-            (identical(other.ram, ram) || other.ram == ram) &&
-            (identical(other.storage, storage) || other.storage == storage) &&
+            (identical(other.name, name) || other.name == name) &&
+            const DeepCollectionEquality().equals(other._colors, _colors) &&
+            const DeepCollectionEquality().equals(other._rams, _rams) &&
+            const DeepCollectionEquality().equals(other._storages, _storages) &&
             (identical(other.imagePath, imagePath) ||
-                other.imagePath == imagePath));
+                other.imagePath == imagePath) &&
+            const DeepCollectionEquality()
+                .equals(other._similarProducts, _similarProducts));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, model, color, ram, storage, imagePath);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      const DeepCollectionEquality().hash(_colors),
+      const DeepCollectionEquality().hash(_rams),
+      const DeepCollectionEquality().hash(_storages),
+      imagePath,
+      const DeepCollectionEquality().hash(_similarProducts));
 
   @JsonKey(ignore: true)
   @override
@@ -238,11 +293,12 @@ class _$ProductImpl implements _Product {
 abstract class _Product implements Product {
   const factory _Product(
       {@HiveField(0) required final String id,
-      @HiveField(1) required final ModelEnum model,
-      @HiveField(2) required final ColorProduct color,
-      @HiveField(3) required final SizeRam ram,
-      @HiveField(4) required final Storage storage,
-      @HiveField(5) final String? imagePath}) = _$ProductImpl;
+      @HiveField(1) required final String name,
+      @HiveField(2) required final List<ColorProduct> colors,
+      @HiveField(3) required final List<SizeRam> rams,
+      @HiveField(4) required final List<Storage> storages,
+      @HiveField(5) final String? imagePath,
+      @HiveField(6) final List<Product> similarProducts}) = _$ProductImpl;
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$ProductImpl.fromJson;
 
@@ -251,19 +307,22 @@ abstract class _Product implements Product {
   String get id;
   @override
   @HiveField(1)
-  ModelEnum get model;
+  String get name;
   @override
   @HiveField(2)
-  ColorProduct get color;
+  List<ColorProduct> get colors;
   @override
   @HiveField(3)
-  SizeRam get ram;
+  List<SizeRam> get rams;
   @override
   @HiveField(4)
-  Storage get storage;
+  List<Storage> get storages;
   @override
   @HiveField(5)
   String? get imagePath;
+  @override
+  @HiveField(6)
+  List<Product> get similarProducts;
   @override
   @JsonKey(ignore: true)
   _$$ProductImplCopyWith<_$ProductImpl> get copyWith =>

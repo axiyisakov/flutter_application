@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_application/core/exception/exceptions.dart';
 import 'package:flutter_application/service/models/color_enum.dart';
 import 'package:flutter_application/service/models/memory_enum.dart';
-import 'package:flutter_application/service/models/model_enum.dart';
 import 'package:flutter_application/service/models/product.dart';
 import 'package:flutter_application/service/models/size_enum.dart';
 import 'package:hive/hive.dart';
@@ -22,7 +21,6 @@ class KeyValueStorage {
     try {
       hive
         ..registerAdapter(ColorProductAdapter())
-        ..registerAdapter(ModelEnumAdapter())
         ..registerAdapter(StorageAdapter())
         ..registerAdapter(SizeRamAdapter())
         ..registerAdapter(ProductAdapter());

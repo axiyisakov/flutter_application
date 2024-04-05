@@ -43,9 +43,9 @@ class _UploadView extends StatelessWidget {
           UploadPhotoStatus.uploadImage => UploadImageWidget(
               image: state.image,
             ),
-          UploadPhotoStatus.uploading =>  Center(
+          UploadPhotoStatus.uploading => Center(
               child: Center(
-                child: CircularProgressIndicator(
+                child: LinearProgressIndicator(
                   value: state.proggress,
                 ),
               ),

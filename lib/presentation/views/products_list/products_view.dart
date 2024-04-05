@@ -77,13 +77,13 @@ class __ProductsListViewBody extends StatelessWidget {
               )
             : const SizedBox.shrink(),
         title: Text(
-          products[index].model.name,
+          products[index].name,
           style: const TextStyle(color: Colors.black),
         ),
-        subtitle: Text(
-          products[index].color.name,
-          style: const TextStyle(color: Colors.black),
-        ),
+        // subtitle: Text(
+        //   products[index].color,
+        //   style: const TextStyle(color: Colors.black),
+        // ),
       )),
       separatorBuilder: (ctx, index) => const SizedBox(
         height: 10,

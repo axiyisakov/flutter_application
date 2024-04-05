@@ -2,12 +2,10 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter_application/service/data_service/local_data_service.dart';
 import 'package:flutter_application/service/models/color_enum.dart';
 import 'package:flutter_application/service/models/memory_enum.dart';
-import 'package:flutter_application/service/models/model_enum.dart';
 import 'package:flutter_application/service/models/product.dart';
 import 'package:flutter_application/service/models/size_enum.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:uuid/uuid.dart';
 
 part 'create_product_bloc.freezed.dart';
 part 'create_product_event.dart';
@@ -20,52 +18,76 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
     required LocalDataService dataService,
   })  : _dataService = dataService,
         super(
-          const CreateProductState(
-
-          ),
+          const CreateProductState(),
         ) {
     registerEvents();
-    fetchProducts();
-  }
-
-  void fetchProducts(){
-     final products = List<Product>.empty(growable: true);
-     ModelEnum.values.forEach((model) {
-      ColorProduct.values.forEach((color) {
-        Storage.values.forEach((storage) {
-         SizeRam.values.forEach((ram) {
-
-             products.add(Product(
-               id: const Uuid().v4(),
-               model: model,
-               color: color,
-               storage: storage,
-               ram: ram,
-
-               imagePath: ''));
-
-           });
-         });
-
-      });
-     });
-
-      emit(state.copyWith(products: products));
   }
 
   void registerEvents() {
     on<CreateProductEvent>((event, emit) async {
       await event.when(
-        onSelectModel: (ModelEnum model) {
-          emit(state.copyWith(model: model,selectedProduct: null));
+        onSelectRam: (ram) {
+          if (state.selectedRams.contains(ram)) {
+            emit(
+              state.copyWith(
+                selectedRams: [
+                  ...state.selectedRams.where((e) => e != ram),
+                ],
+                selectedProduct: null,
+              ),
+            );
+          } else {
+            emit(state.copyWith(
+              selectedRams: [
+                ...state.selectedRams,
+                ram,
+              ],
+              selectedProduct: null,
+            ));
+          }
+        },
+        onSelectStorage: (storage) {
+          if (state.selectedStorages.contains(storage)) {
+            emit(
+              state.copyWith(
+                selectedStorages: [
+                  ...state.selectedStorages.where((e) => e != storage),
+                ],
+                selectedProduct: null,
+              ),
+            );
+          } else {
+            emit(state.copyWith(
+              selectedStorages: [
+                ...state.selectedStorages,
+                storage,
+              ],
+              selectedProduct: null,
+            ));
+          }
         },
         onSelectColor: (ColorProduct color) {
-          emit(state.copyWith(color: color,selectedProduct: null));
+          if (state.selectedColors.contains(color)) {
+            emit(
+              state.copyWith(
+                selectedColors: [
+                  ...state.selectedColors.where((e) => e != color),
+                ],
+                selectedProduct: null,
+              ),
+            );
+          } else {
+            emit(state.copyWith(
+              selectedColors: [
+                ...state.selectedColors,
+                color,
+              ],
+              selectedProduct: null,
+            ));
+          }
         },
         onSelectProduct: (Product product) async {
-
-           emit(state.copyWith(selectedProduct: product));
-
+          emit(state.copyWith(selectedProduct: product));
         },
         onSelectImageUrl: (url) {
           emit(state.copyWith(imageUrl: url));
@@ -88,7 +110,7 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
 
       await _dataService
           .saveProduct(
-           newProduct,
+            newProduct,
           )
           .whenComplete(() => emitter(
                 state.copyWith(

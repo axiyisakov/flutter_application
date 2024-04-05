@@ -18,30 +18,33 @@ class ProductAdapter extends TypeAdapter<Product> {
     };
     return Product(
       id: fields[0] as String,
-      model: fields[1] as ModelEnum,
-      color: fields[2] as ColorProduct,
-      ram: fields[3] as SizeRam,
-      storage: fields[4] as Storage,
+      name: fields[1] as String,
+      colors: (fields[2] as List).cast<ColorProduct>(),
+      rams: (fields[3] as List).cast<SizeRam>(),
+      storages: (fields[4] as List).cast<Storage>(),
       imagePath: fields[5] as String?,
+      similarProducts: (fields[6] as List).cast<Product>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, Product obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.model)
+      ..write(obj.name)
       ..writeByte(2)
-      ..write(obj.color)
+      ..write(obj.colors)
       ..writeByte(3)
-      ..write(obj.ram)
+      ..write(obj.rams)
       ..writeByte(4)
-      ..write(obj.storage)
+      ..write(obj.storages)
       ..writeByte(5)
-      ..write(obj.imagePath);
+      ..write(obj.imagePath)
+      ..writeByte(6)
+      ..write(obj.similarProducts);
   }
 
   @override
@@ -62,28 +65,33 @@ class ProductAdapter extends TypeAdapter<Product> {
 _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
     _$ProductImpl(
       id: json['id'] as String,
-      model: $enumDecode(_$ModelEnumEnumMap, json['model']),
-      color: $enumDecode(_$ColorProductEnumMap, json['color']),
-      ram: $enumDecode(_$SizeRamEnumMap, json['ram']),
-      storage: $enumDecode(_$StorageEnumMap, json['storage']),
+      name: json['name'] as String,
+      colors: (json['colors'] as List<dynamic>)
+          .map((e) => $enumDecode(_$ColorProductEnumMap, e))
+          .toList(),
+      rams: (json['rams'] as List<dynamic>)
+          .map((e) => $enumDecode(_$SizeRamEnumMap, e))
+          .toList(),
+      storages: (json['storages'] as List<dynamic>)
+          .map((e) => $enumDecode(_$StorageEnumMap, e))
+          .toList(),
       imagePath: json['imagePath'] as String?,
+      similarProducts: (json['similarProducts'] as List<dynamic>?)
+              ?.map((e) => Product.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'model': _$ModelEnumEnumMap[instance.model]!,
-      'color': _$ColorProductEnumMap[instance.color]!,
-      'ram': _$SizeRamEnumMap[instance.ram]!,
-      'storage': _$StorageEnumMap[instance.storage]!,
+      'name': instance.name,
+      'colors': instance.colors.map((e) => _$ColorProductEnumMap[e]!).toList(),
+      'rams': instance.rams.map((e) => _$SizeRamEnumMap[e]!).toList(),
+      'storages': instance.storages.map((e) => _$StorageEnumMap[e]!).toList(),
       'imagePath': instance.imagePath,
+      'similarProducts': instance.similarProducts,
     };
-
-const _$ModelEnumEnumMap = {
-  ModelEnum.m1pro: 'M1 Pro',
-  ModelEnum.m2pro: 'M2 Pro',
-  ModelEnum.m3pro: 'M3 Pro',
-};
 
 const _$ColorProductEnumMap = {
   ColorProduct.black: 'Black',
