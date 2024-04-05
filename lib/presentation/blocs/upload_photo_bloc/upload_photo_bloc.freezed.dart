@@ -19,18 +19,21 @@ mixin _$UploadPhotoEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() pickImage,
+    required TResult Function() deleteImage,
     required TResult Function(File image) uploadImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? pickImage,
+    TResult? Function()? deleteImage,
     TResult? Function(File image)? uploadImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? pickImage,
+    TResult Function()? deleteImage,
     TResult Function(File image)? uploadImage,
     required TResult orElse(),
   }) =>
@@ -38,18 +41,21 @@ mixin _$UploadPhotoEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) pickImage,
+    required TResult Function(_DeleteImage value) deleteImage,
     required TResult Function(_UploadImage value) uploadImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? pickImage,
+    TResult? Function(_DeleteImage value)? deleteImage,
     TResult? Function(_UploadImage value)? uploadImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? pickImage,
+    TResult Function(_DeleteImage value)? deleteImage,
     TResult Function(_UploadImage value)? uploadImage,
     required TResult orElse(),
   }) =>
@@ -113,6 +119,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() pickImage,
+    required TResult Function() deleteImage,
     required TResult Function(File image) uploadImage,
   }) {
     return pickImage();
@@ -122,6 +129,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? pickImage,
+    TResult? Function()? deleteImage,
     TResult? Function(File image)? uploadImage,
   }) {
     return pickImage?.call();
@@ -131,6 +139,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? pickImage,
+    TResult Function()? deleteImage,
     TResult Function(File image)? uploadImage,
     required TResult orElse(),
   }) {
@@ -144,6 +153,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) pickImage,
+    required TResult Function(_DeleteImage value) deleteImage,
     required TResult Function(_UploadImage value) uploadImage,
   }) {
     return pickImage(this);
@@ -153,6 +163,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? pickImage,
+    TResult? Function(_DeleteImage value)? deleteImage,
     TResult? Function(_UploadImage value)? uploadImage,
   }) {
     return pickImage?.call(this);
@@ -162,6 +173,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? pickImage,
+    TResult Function(_DeleteImage value)? deleteImage,
     TResult Function(_UploadImage value)? uploadImage,
     required TResult orElse(),
   }) {
@@ -174,6 +186,114 @@ class _$StartedImpl implements _Started {
 
 abstract class _Started implements UploadPhotoEvent {
   const factory _Started() = _$StartedImpl;
+}
+
+/// @nodoc
+abstract class _$$DeleteImageImplCopyWith<$Res> {
+  factory _$$DeleteImageImplCopyWith(
+          _$DeleteImageImpl value, $Res Function(_$DeleteImageImpl) then) =
+      __$$DeleteImageImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DeleteImageImplCopyWithImpl<$Res>
+    extends _$UploadPhotoEventCopyWithImpl<$Res, _$DeleteImageImpl>
+    implements _$$DeleteImageImplCopyWith<$Res> {
+  __$$DeleteImageImplCopyWithImpl(
+      _$DeleteImageImpl _value, $Res Function(_$DeleteImageImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$DeleteImageImpl implements _DeleteImage {
+  const _$DeleteImageImpl();
+
+  @override
+  String toString() {
+    return 'UploadPhotoEvent.deleteImage()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$DeleteImageImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() pickImage,
+    required TResult Function() deleteImage,
+    required TResult Function(File image) uploadImage,
+  }) {
+    return deleteImage();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? pickImage,
+    TResult? Function()? deleteImage,
+    TResult? Function(File image)? uploadImage,
+  }) {
+    return deleteImage?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? pickImage,
+    TResult Function()? deleteImage,
+    TResult Function(File image)? uploadImage,
+    required TResult orElse(),
+  }) {
+    if (deleteImage != null) {
+      return deleteImage();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) pickImage,
+    required TResult Function(_DeleteImage value) deleteImage,
+    required TResult Function(_UploadImage value) uploadImage,
+  }) {
+    return deleteImage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? pickImage,
+    TResult? Function(_DeleteImage value)? deleteImage,
+    TResult? Function(_UploadImage value)? uploadImage,
+  }) {
+    return deleteImage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? pickImage,
+    TResult Function(_DeleteImage value)? deleteImage,
+    TResult Function(_UploadImage value)? uploadImage,
+    required TResult orElse(),
+  }) {
+    if (deleteImage != null) {
+      return deleteImage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteImage implements UploadPhotoEvent {
+  const factory _DeleteImage() = _$DeleteImageImpl;
 }
 
 /// @nodoc
@@ -241,6 +361,7 @@ class _$UploadImageImpl implements _UploadImage {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() pickImage,
+    required TResult Function() deleteImage,
     required TResult Function(File image) uploadImage,
   }) {
     return uploadImage(image);
@@ -250,6 +371,7 @@ class _$UploadImageImpl implements _UploadImage {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? pickImage,
+    TResult? Function()? deleteImage,
     TResult? Function(File image)? uploadImage,
   }) {
     return uploadImage?.call(image);
@@ -259,6 +381,7 @@ class _$UploadImageImpl implements _UploadImage {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? pickImage,
+    TResult Function()? deleteImage,
     TResult Function(File image)? uploadImage,
     required TResult orElse(),
   }) {
@@ -272,6 +395,7 @@ class _$UploadImageImpl implements _UploadImage {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) pickImage,
+    required TResult Function(_DeleteImage value) deleteImage,
     required TResult Function(_UploadImage value) uploadImage,
   }) {
     return uploadImage(this);
@@ -281,6 +405,7 @@ class _$UploadImageImpl implements _UploadImage {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? pickImage,
+    TResult? Function(_DeleteImage value)? deleteImage,
     TResult? Function(_UploadImage value)? uploadImage,
   }) {
     return uploadImage?.call(this);
@@ -290,6 +415,7 @@ class _$UploadImageImpl implements _UploadImage {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? pickImage,
+    TResult Function(_DeleteImage value)? deleteImage,
     TResult Function(_UploadImage value)? uploadImage,
     required TResult orElse(),
   }) {
@@ -315,7 +441,7 @@ mixin _$UploadPhotoState {
   File? get image => throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
-  double get proggress => throw _privateConstructorUsedError;
+  double get progress => throw _privateConstructorUsedError;
   Object? get error => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -334,7 +460,7 @@ abstract class $UploadPhotoStateCopyWith<$Res> {
       File? image,
       String? url,
       String? message,
-      double proggress,
+      double progress,
       Object? error});
 }
 
@@ -355,7 +481,7 @@ class _$UploadPhotoStateCopyWithImpl<$Res, $Val extends UploadPhotoState>
     Object? image = freezed,
     Object? url = freezed,
     Object? message = freezed,
-    Object? proggress = null,
+    Object? progress = null,
     Object? error = freezed,
   }) {
     return _then(_value.copyWith(
@@ -375,9 +501,9 @@ class _$UploadPhotoStateCopyWithImpl<$Res, $Val extends UploadPhotoState>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      proggress: null == proggress
-          ? _value.proggress
-          : proggress // ignore: cast_nullable_to_non_nullable
+      progress: null == progress
+          ? _value.progress
+          : progress // ignore: cast_nullable_to_non_nullable
               as double,
       error: freezed == error ? _value.error : error,
     ) as $Val);
@@ -397,7 +523,7 @@ abstract class _$$UploadPhotoStateImplCopyWith<$Res>
       File? image,
       String? url,
       String? message,
-      double proggress,
+      double progress,
       Object? error});
 }
 
@@ -416,7 +542,7 @@ class __$$UploadPhotoStateImplCopyWithImpl<$Res>
     Object? image = freezed,
     Object? url = freezed,
     Object? message = freezed,
-    Object? proggress = null,
+    Object? progress = null,
     Object? error = freezed,
   }) {
     return _then(_$UploadPhotoStateImpl(
@@ -436,9 +562,9 @@ class __$$UploadPhotoStateImplCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      proggress: null == proggress
-          ? _value.proggress
-          : proggress // ignore: cast_nullable_to_non_nullable
+      progress: null == progress
+          ? _value.progress
+          : progress // ignore: cast_nullable_to_non_nullable
               as double,
       error: freezed == error ? _value.error : error,
     ));
@@ -453,7 +579,7 @@ class _$UploadPhotoStateImpl implements _UploadPhotoState {
       this.image,
       this.url,
       this.message,
-      this.proggress = 0,
+      this.progress = 0,
       this.error});
 
   @override
@@ -467,13 +593,13 @@ class _$UploadPhotoStateImpl implements _UploadPhotoState {
   final String? message;
   @override
   @JsonKey()
-  final double proggress;
+  final double progress;
   @override
   final Object? error;
 
   @override
   String toString() {
-    return 'UploadPhotoState(status: $status, image: $image, url: $url, message: $message, proggress: $proggress, error: $error)';
+    return 'UploadPhotoState(status: $status, image: $image, url: $url, message: $message, progress: $progress, error: $error)';
   }
 
   @override
@@ -485,14 +611,14 @@ class _$UploadPhotoStateImpl implements _UploadPhotoState {
             (identical(other.image, image) || other.image == image) &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.message, message) || other.message == message) &&
-            (identical(other.proggress, proggress) ||
-                other.proggress == proggress) &&
+            (identical(other.progress, progress) ||
+                other.progress == progress) &&
             const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, status, image, url, message,
-      proggress, const DeepCollectionEquality().hash(error));
+      progress, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
@@ -508,7 +634,7 @@ abstract class _UploadPhotoState implements UploadPhotoState {
       final File? image,
       final String? url,
       final String? message,
-      final double proggress,
+      final double progress,
       final Object? error}) = _$UploadPhotoStateImpl;
 
   @override
@@ -520,7 +646,7 @@ abstract class _UploadPhotoState implements UploadPhotoState {
   @override
   String? get message;
   @override
-  double get proggress;
+  double get progress;
   @override
   Object? get error;
   @override

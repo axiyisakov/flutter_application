@@ -8,8 +8,8 @@ class CreateProductState with _$CreateProductState {
     @Default([]) List<SizeRam> selectedRams,
     @Default([]) List<Storage> selectedStorages,
     @Default(CreateProductStateStatus.initial) CreateProductStateStatus status,
-    @Default([]) List<Product> products,
-    Product? selectedProduct,
+    @Default([]) List<Product> similarProducts,
+    Product? product,
     String? imageUrl,
     Object? error,
   }) = _CreateProductState;

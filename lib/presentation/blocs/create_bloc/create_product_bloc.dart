@@ -6,6 +6,7 @@ import 'package:flutter_application/service/models/product.dart';
 import 'package:flutter_application/service/models/size_enum.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:uuid/uuid.dart';
 
 part 'create_product_bloc.freezed.dart';
 part 'create_product_event.dart';
@@ -26,6 +27,9 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
   void registerEvents() {
     on<CreateProductEvent>((event, emit) async {
       await event.when(
+        onNameChanged: (name) {
+          emit(state.copyWith(model: name));
+        },
         onSelectRam: (ram) {
           if (state.selectedRams.contains(ram)) {
             emit(
@@ -33,7 +37,6 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
                 selectedRams: [
                   ...state.selectedRams.where((e) => e != ram),
                 ],
-                selectedProduct: null,
               ),
             );
           } else {
@@ -42,7 +45,6 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
                 ...state.selectedRams,
                 ram,
               ],
-              selectedProduct: null,
             ));
           }
         },
@@ -53,7 +55,6 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
                 selectedStorages: [
                   ...state.selectedStorages.where((e) => e != storage),
                 ],
-                selectedProduct: null,
               ),
             );
           } else {
@@ -62,7 +63,6 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
                 ...state.selectedStorages,
                 storage,
               ],
-              selectedProduct: null,
             ));
           }
         },
@@ -73,7 +73,6 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
                 selectedColors: [
                   ...state.selectedColors.where((e) => e != color),
                 ],
-                selectedProduct: null,
               ),
             );
           } else {
@@ -82,19 +81,52 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
                 ...state.selectedColors,
                 color,
               ],
-              selectedProduct: null,
             ));
           }
         },
-        onSelectProduct: (Product product) async {
-          emit(state.copyWith(selectedProduct: product));
-        },
+        onRandomProduct: () async => showSimilarProducts(),
         onSelectImageUrl: (url) {
           emit(state.copyWith(imageUrl: url));
         },
         onSaveProduct: () async => await saveDataToLocal(emit),
       );
     });
+  }
+
+  void showSimilarProducts() async {
+    if (state.model != null && state.model!.isNotEmpty) {
+      final product = Product(
+        id: const Uuid().v1(),
+        name: state.model ?? '',
+        colors: state.selectedColors,
+        rams: state.selectedRams,
+        storages: state.selectedStorages,
+      );
+      final similarProductList = List<Product>.empty(growable: true);
+      for (var storage in state.selectedStorages) {
+        for (var color in state.selectedColors) {
+          for (var ram in state.selectedRams) {
+            final newProduct = Product(
+              id: const Uuid().v4(),
+              name: state.model ?? '',
+              selectedColor: color,
+              selectedRam: ram,
+              selectedStorage: storage,
+            );
+
+            similarProductList.add(newProduct);
+          }
+        }
+      }
+      final lastProduct = product.copyWith(
+        similarProducts: similarProductList,
+      );
+
+      emit(state.copyWith(
+        product: lastProduct,
+        similarProducts: similarProductList,
+      ));
+    }
   }
 
   Future<void> saveDataToLocal(emitter) async {
@@ -104,27 +136,29 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
           status: CreateProductStateStatus.loading,
         ),
       );
-      final newProduct = state.selectedProduct!.copyWith(
-        imagePath: state.imageUrl,
-      );
+      if (state.product != null) {
+        final newProduct = state.product!.copyWith(
+          imagePath: state.imageUrl,
+        );
 
-      await _dataService
-          .saveProduct(
-            newProduct,
-          )
-          .whenComplete(() => emitter(
+        await _dataService
+            .saveProduct(
+              newProduct,
+            )
+            .whenComplete(() => emitter(
+                  state.copyWith(
+                    status: CreateProductStateStatus.success,
+                  ),
+                ))
+            .onError(
+              (error, stackTrace) => emitter(
                 state.copyWith(
-                  status: CreateProductStateStatus.success,
+                  status: CreateProductStateStatus.error,
+                  error: error,
                 ),
-              ))
-          .onError(
-            (error, stackTrace) => emitter(
-              state.copyWith(
-                status: CreateProductStateStatus.error,
-                error: error,
               ),
-            ),
-          );
+            );
+      }
     } catch (e) {
       emitter(state.copyWith(
         status: CreateProductStateStatus.error,

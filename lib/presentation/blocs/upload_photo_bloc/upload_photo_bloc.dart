@@ -25,6 +25,14 @@ class UploadPhotoBloc extends Bloc<UploadPhotoEvent, UploadPhotoState> {
         super(const UploadPhotoState()) {
     on<UploadPhotoEvent>((event, emit) async {
       await event.when(
+        deleteImage: () async {
+          emit(
+            state.copyWith(
+              status: UploadPhotoStatus.pickImage,
+              image: null,
+            ),
+          );
+        },
         pickImage: () async => await _pickImage(emit),
         uploadImage: (image) async => await _uploadImage(image, emit),
       );
@@ -65,10 +73,9 @@ class UploadPhotoBloc extends Bloc<UploadPhotoEvent, UploadPhotoState> {
         onSendProgress: (sent, total) {
           final progress = sent / total;
 
-          EasyLoading.showProgress(progress);
           emit(
             state.copyWith(
-              proggress: progress,
+              progress: progress,
             ),
           );
         },

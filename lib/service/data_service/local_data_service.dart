@@ -60,6 +60,13 @@ class LocalDataServiceImpl implements LocalDataService {
 
   @override
   Future<Product> getProductById(String id) async {
-    throw UnimplementedError();
+   try{
+    final box = await storage.boxProducts();
+    final products = await getProducts();
+    return products.firstWhere((element) => element.id == id);
+   }catch(e){
+     debugPrint(e.toString());
+     rethrow;
+   }
   }
 }

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/core/di/locator.dart';
 import 'package:flutter_application/presentation/blocs/create_bloc/create_product_bloc.dart';
@@ -6,8 +7,8 @@ import 'package:flutter_application/presentation/views/upload_image/pick_image.d
 import 'package:flutter_application/presentation/views/upload_image/upload_image_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class UploadHorizontalWidget extends StatelessWidget {
-  const UploadHorizontalWidget({super.key});
+class UploadPhotoWidget extends StatelessWidget {
+  const UploadPhotoWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +32,16 @@ class _UploadView extends StatelessWidget {
               child: CircularProgressIndicator(),
             ),
           UploadPhotoStatus.success => const Center(
-              child: Text('Success'),
+              child: Icon(
+                CupertinoIcons.check_mark,
+                size: 50,
+              ),
             ),
           UploadPhotoStatus.failure => const Center(
-              child: Text('Failure'),
+              child: Icon(
+                Icons.error,
+                size: 50,
+              ),
             ),
           UploadPhotoStatus.pickImage => const SizedBox(
               height: 60,
@@ -44,9 +51,18 @@ class _UploadView extends StatelessWidget {
               image: state.image,
             ),
           UploadPhotoStatus.uploading => Center(
-              child: Center(
-                child: LinearProgressIndicator(
-                  value: state.proggress,
+              child: SizedBox(
+                height: 100,
+                width: 100,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(state.progress.toStringAsFixed(2)),
+                    LinearProgressIndicator(
+                      value: state.progress,
+                    ),
+                  ],
                 ),
               ),
             ),

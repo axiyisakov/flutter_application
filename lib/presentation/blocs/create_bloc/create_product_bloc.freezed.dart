@@ -23,7 +23,8 @@ mixin _$CreateProductEvent {
     required TResult Function(SizeRam ram) onSelectRam,
     required TResult Function() onSaveProduct,
     required TResult Function(String url) onSelectImageUrl,
-    required TResult Function(Product storage) onSelectProduct,
+    required TResult Function() onRandomProduct,
+    required TResult Function(String? name) onNameChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -33,7 +34,8 @@ mixin _$CreateProductEvent {
     TResult? Function(SizeRam ram)? onSelectRam,
     TResult? Function()? onSaveProduct,
     TResult? Function(String url)? onSelectImageUrl,
-    TResult? Function(Product storage)? onSelectProduct,
+    TResult? Function()? onRandomProduct,
+    TResult? Function(String? name)? onNameChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,7 +45,8 @@ mixin _$CreateProductEvent {
     TResult Function(SizeRam ram)? onSelectRam,
     TResult Function()? onSaveProduct,
     TResult Function(String url)? onSelectImageUrl,
-    TResult Function(Product storage)? onSelectProduct,
+    TResult Function()? onRandomProduct,
+    TResult Function(String? name)? onNameChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -54,7 +57,8 @@ mixin _$CreateProductEvent {
     required TResult Function(_SelectRam value) onSelectRam,
     required TResult Function(_SaveProduct value) onSaveProduct,
     required TResult Function(_SelectUrl value) onSelectImageUrl,
-    required TResult Function(_SelectProduct value) onSelectProduct,
+    required TResult Function(_RandomProducts value) onRandomProduct,
+    required TResult Function(_NameChanged value) onNameChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,7 +68,8 @@ mixin _$CreateProductEvent {
     TResult? Function(_SelectRam value)? onSelectRam,
     TResult? Function(_SaveProduct value)? onSaveProduct,
     TResult? Function(_SelectUrl value)? onSelectImageUrl,
-    TResult? Function(_SelectProduct value)? onSelectProduct,
+    TResult? Function(_RandomProducts value)? onRandomProduct,
+    TResult? Function(_NameChanged value)? onNameChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,7 +79,8 @@ mixin _$CreateProductEvent {
     TResult Function(_SelectRam value)? onSelectRam,
     TResult Function(_SaveProduct value)? onSaveProduct,
     TResult Function(_SelectUrl value)? onSelectImageUrl,
-    TResult Function(_SelectProduct value)? onSelectProduct,
+    TResult Function(_RandomProducts value)? onRandomProduct,
+    TResult Function(_NameChanged value)? onNameChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -167,7 +173,8 @@ class _$SelectColorImpl implements _SelectColor {
     required TResult Function(SizeRam ram) onSelectRam,
     required TResult Function() onSaveProduct,
     required TResult Function(String url) onSelectImageUrl,
-    required TResult Function(Product storage) onSelectProduct,
+    required TResult Function() onRandomProduct,
+    required TResult Function(String? name) onNameChanged,
   }) {
     return onSelectColor(color);
   }
@@ -180,7 +187,8 @@ class _$SelectColorImpl implements _SelectColor {
     TResult? Function(SizeRam ram)? onSelectRam,
     TResult? Function()? onSaveProduct,
     TResult? Function(String url)? onSelectImageUrl,
-    TResult? Function(Product storage)? onSelectProduct,
+    TResult? Function()? onRandomProduct,
+    TResult? Function(String? name)? onNameChanged,
   }) {
     return onSelectColor?.call(color);
   }
@@ -193,7 +201,8 @@ class _$SelectColorImpl implements _SelectColor {
     TResult Function(SizeRam ram)? onSelectRam,
     TResult Function()? onSaveProduct,
     TResult Function(String url)? onSelectImageUrl,
-    TResult Function(Product storage)? onSelectProduct,
+    TResult Function()? onRandomProduct,
+    TResult Function(String? name)? onNameChanged,
     required TResult orElse(),
   }) {
     if (onSelectColor != null) {
@@ -210,7 +219,8 @@ class _$SelectColorImpl implements _SelectColor {
     required TResult Function(_SelectRam value) onSelectRam,
     required TResult Function(_SaveProduct value) onSaveProduct,
     required TResult Function(_SelectUrl value) onSelectImageUrl,
-    required TResult Function(_SelectProduct value) onSelectProduct,
+    required TResult Function(_RandomProducts value) onRandomProduct,
+    required TResult Function(_NameChanged value) onNameChanged,
   }) {
     return onSelectColor(this);
   }
@@ -223,7 +233,8 @@ class _$SelectColorImpl implements _SelectColor {
     TResult? Function(_SelectRam value)? onSelectRam,
     TResult? Function(_SaveProduct value)? onSaveProduct,
     TResult? Function(_SelectUrl value)? onSelectImageUrl,
-    TResult? Function(_SelectProduct value)? onSelectProduct,
+    TResult? Function(_RandomProducts value)? onRandomProduct,
+    TResult? Function(_NameChanged value)? onNameChanged,
   }) {
     return onSelectColor?.call(this);
   }
@@ -236,7 +247,8 @@ class _$SelectColorImpl implements _SelectColor {
     TResult Function(_SelectRam value)? onSelectRam,
     TResult Function(_SaveProduct value)? onSaveProduct,
     TResult Function(_SelectUrl value)? onSelectImageUrl,
-    TResult Function(_SelectProduct value)? onSelectProduct,
+    TResult Function(_RandomProducts value)? onRandomProduct,
+    TResult Function(_NameChanged value)? onNameChanged,
     required TResult orElse(),
   }) {
     if (onSelectColor != null) {
@@ -324,7 +336,8 @@ class _$SelectStorageImpl implements _SelectStorage {
     required TResult Function(SizeRam ram) onSelectRam,
     required TResult Function() onSaveProduct,
     required TResult Function(String url) onSelectImageUrl,
-    required TResult Function(Product storage) onSelectProduct,
+    required TResult Function() onRandomProduct,
+    required TResult Function(String? name) onNameChanged,
   }) {
     return onSelectStorage(storage);
   }
@@ -337,7 +350,8 @@ class _$SelectStorageImpl implements _SelectStorage {
     TResult? Function(SizeRam ram)? onSelectRam,
     TResult? Function()? onSaveProduct,
     TResult? Function(String url)? onSelectImageUrl,
-    TResult? Function(Product storage)? onSelectProduct,
+    TResult? Function()? onRandomProduct,
+    TResult? Function(String? name)? onNameChanged,
   }) {
     return onSelectStorage?.call(storage);
   }
@@ -350,7 +364,8 @@ class _$SelectStorageImpl implements _SelectStorage {
     TResult Function(SizeRam ram)? onSelectRam,
     TResult Function()? onSaveProduct,
     TResult Function(String url)? onSelectImageUrl,
-    TResult Function(Product storage)? onSelectProduct,
+    TResult Function()? onRandomProduct,
+    TResult Function(String? name)? onNameChanged,
     required TResult orElse(),
   }) {
     if (onSelectStorage != null) {
@@ -367,7 +382,8 @@ class _$SelectStorageImpl implements _SelectStorage {
     required TResult Function(_SelectRam value) onSelectRam,
     required TResult Function(_SaveProduct value) onSaveProduct,
     required TResult Function(_SelectUrl value) onSelectImageUrl,
-    required TResult Function(_SelectProduct value) onSelectProduct,
+    required TResult Function(_RandomProducts value) onRandomProduct,
+    required TResult Function(_NameChanged value) onNameChanged,
   }) {
     return onSelectStorage(this);
   }
@@ -380,7 +396,8 @@ class _$SelectStorageImpl implements _SelectStorage {
     TResult? Function(_SelectRam value)? onSelectRam,
     TResult? Function(_SaveProduct value)? onSaveProduct,
     TResult? Function(_SelectUrl value)? onSelectImageUrl,
-    TResult? Function(_SelectProduct value)? onSelectProduct,
+    TResult? Function(_RandomProducts value)? onRandomProduct,
+    TResult? Function(_NameChanged value)? onNameChanged,
   }) {
     return onSelectStorage?.call(this);
   }
@@ -393,7 +410,8 @@ class _$SelectStorageImpl implements _SelectStorage {
     TResult Function(_SelectRam value)? onSelectRam,
     TResult Function(_SaveProduct value)? onSaveProduct,
     TResult Function(_SelectUrl value)? onSelectImageUrl,
-    TResult Function(_SelectProduct value)? onSelectProduct,
+    TResult Function(_RandomProducts value)? onRandomProduct,
+    TResult Function(_NameChanged value)? onNameChanged,
     required TResult orElse(),
   }) {
     if (onSelectStorage != null) {
@@ -481,7 +499,8 @@ class _$SelectRamImpl implements _SelectRam {
     required TResult Function(SizeRam ram) onSelectRam,
     required TResult Function() onSaveProduct,
     required TResult Function(String url) onSelectImageUrl,
-    required TResult Function(Product storage) onSelectProduct,
+    required TResult Function() onRandomProduct,
+    required TResult Function(String? name) onNameChanged,
   }) {
     return onSelectRam(ram);
   }
@@ -494,7 +513,8 @@ class _$SelectRamImpl implements _SelectRam {
     TResult? Function(SizeRam ram)? onSelectRam,
     TResult? Function()? onSaveProduct,
     TResult? Function(String url)? onSelectImageUrl,
-    TResult? Function(Product storage)? onSelectProduct,
+    TResult? Function()? onRandomProduct,
+    TResult? Function(String? name)? onNameChanged,
   }) {
     return onSelectRam?.call(ram);
   }
@@ -507,7 +527,8 @@ class _$SelectRamImpl implements _SelectRam {
     TResult Function(SizeRam ram)? onSelectRam,
     TResult Function()? onSaveProduct,
     TResult Function(String url)? onSelectImageUrl,
-    TResult Function(Product storage)? onSelectProduct,
+    TResult Function()? onRandomProduct,
+    TResult Function(String? name)? onNameChanged,
     required TResult orElse(),
   }) {
     if (onSelectRam != null) {
@@ -524,7 +545,8 @@ class _$SelectRamImpl implements _SelectRam {
     required TResult Function(_SelectRam value) onSelectRam,
     required TResult Function(_SaveProduct value) onSaveProduct,
     required TResult Function(_SelectUrl value) onSelectImageUrl,
-    required TResult Function(_SelectProduct value) onSelectProduct,
+    required TResult Function(_RandomProducts value) onRandomProduct,
+    required TResult Function(_NameChanged value) onNameChanged,
   }) {
     return onSelectRam(this);
   }
@@ -537,7 +559,8 @@ class _$SelectRamImpl implements _SelectRam {
     TResult? Function(_SelectRam value)? onSelectRam,
     TResult? Function(_SaveProduct value)? onSaveProduct,
     TResult? Function(_SelectUrl value)? onSelectImageUrl,
-    TResult? Function(_SelectProduct value)? onSelectProduct,
+    TResult? Function(_RandomProducts value)? onRandomProduct,
+    TResult? Function(_NameChanged value)? onNameChanged,
   }) {
     return onSelectRam?.call(this);
   }
@@ -550,7 +573,8 @@ class _$SelectRamImpl implements _SelectRam {
     TResult Function(_SelectRam value)? onSelectRam,
     TResult Function(_SaveProduct value)? onSaveProduct,
     TResult Function(_SelectUrl value)? onSelectImageUrl,
-    TResult Function(_SelectProduct value)? onSelectProduct,
+    TResult Function(_RandomProducts value)? onRandomProduct,
+    TResult Function(_NameChanged value)? onNameChanged,
     required TResult orElse(),
   }) {
     if (onSelectRam != null) {
@@ -612,7 +636,8 @@ class _$SaveProductImpl implements _SaveProduct {
     required TResult Function(SizeRam ram) onSelectRam,
     required TResult Function() onSaveProduct,
     required TResult Function(String url) onSelectImageUrl,
-    required TResult Function(Product storage) onSelectProduct,
+    required TResult Function() onRandomProduct,
+    required TResult Function(String? name) onNameChanged,
   }) {
     return onSaveProduct();
   }
@@ -625,7 +650,8 @@ class _$SaveProductImpl implements _SaveProduct {
     TResult? Function(SizeRam ram)? onSelectRam,
     TResult? Function()? onSaveProduct,
     TResult? Function(String url)? onSelectImageUrl,
-    TResult? Function(Product storage)? onSelectProduct,
+    TResult? Function()? onRandomProduct,
+    TResult? Function(String? name)? onNameChanged,
   }) {
     return onSaveProduct?.call();
   }
@@ -638,7 +664,8 @@ class _$SaveProductImpl implements _SaveProduct {
     TResult Function(SizeRam ram)? onSelectRam,
     TResult Function()? onSaveProduct,
     TResult Function(String url)? onSelectImageUrl,
-    TResult Function(Product storage)? onSelectProduct,
+    TResult Function()? onRandomProduct,
+    TResult Function(String? name)? onNameChanged,
     required TResult orElse(),
   }) {
     if (onSaveProduct != null) {
@@ -655,7 +682,8 @@ class _$SaveProductImpl implements _SaveProduct {
     required TResult Function(_SelectRam value) onSelectRam,
     required TResult Function(_SaveProduct value) onSaveProduct,
     required TResult Function(_SelectUrl value) onSelectImageUrl,
-    required TResult Function(_SelectProduct value) onSelectProduct,
+    required TResult Function(_RandomProducts value) onRandomProduct,
+    required TResult Function(_NameChanged value) onNameChanged,
   }) {
     return onSaveProduct(this);
   }
@@ -668,7 +696,8 @@ class _$SaveProductImpl implements _SaveProduct {
     TResult? Function(_SelectRam value)? onSelectRam,
     TResult? Function(_SaveProduct value)? onSaveProduct,
     TResult? Function(_SelectUrl value)? onSelectImageUrl,
-    TResult? Function(_SelectProduct value)? onSelectProduct,
+    TResult? Function(_RandomProducts value)? onRandomProduct,
+    TResult? Function(_NameChanged value)? onNameChanged,
   }) {
     return onSaveProduct?.call(this);
   }
@@ -681,7 +710,8 @@ class _$SaveProductImpl implements _SaveProduct {
     TResult Function(_SelectRam value)? onSelectRam,
     TResult Function(_SaveProduct value)? onSaveProduct,
     TResult Function(_SelectUrl value)? onSelectImageUrl,
-    TResult Function(_SelectProduct value)? onSelectProduct,
+    TResult Function(_RandomProducts value)? onRandomProduct,
+    TResult Function(_NameChanged value)? onNameChanged,
     required TResult orElse(),
   }) {
     if (onSaveProduct != null) {
@@ -764,7 +794,8 @@ class _$SelectUrlImpl implements _SelectUrl {
     required TResult Function(SizeRam ram) onSelectRam,
     required TResult Function() onSaveProduct,
     required TResult Function(String url) onSelectImageUrl,
-    required TResult Function(Product storage) onSelectProduct,
+    required TResult Function() onRandomProduct,
+    required TResult Function(String? name) onNameChanged,
   }) {
     return onSelectImageUrl(url);
   }
@@ -777,7 +808,8 @@ class _$SelectUrlImpl implements _SelectUrl {
     TResult? Function(SizeRam ram)? onSelectRam,
     TResult? Function()? onSaveProduct,
     TResult? Function(String url)? onSelectImageUrl,
-    TResult? Function(Product storage)? onSelectProduct,
+    TResult? Function()? onRandomProduct,
+    TResult? Function(String? name)? onNameChanged,
   }) {
     return onSelectImageUrl?.call(url);
   }
@@ -790,7 +822,8 @@ class _$SelectUrlImpl implements _SelectUrl {
     TResult Function(SizeRam ram)? onSelectRam,
     TResult Function()? onSaveProduct,
     TResult Function(String url)? onSelectImageUrl,
-    TResult Function(Product storage)? onSelectProduct,
+    TResult Function()? onRandomProduct,
+    TResult Function(String? name)? onNameChanged,
     required TResult orElse(),
   }) {
     if (onSelectImageUrl != null) {
@@ -807,7 +840,8 @@ class _$SelectUrlImpl implements _SelectUrl {
     required TResult Function(_SelectRam value) onSelectRam,
     required TResult Function(_SaveProduct value) onSaveProduct,
     required TResult Function(_SelectUrl value) onSelectImageUrl,
-    required TResult Function(_SelectProduct value) onSelectProduct,
+    required TResult Function(_RandomProducts value) onRandomProduct,
+    required TResult Function(_NameChanged value) onNameChanged,
   }) {
     return onSelectImageUrl(this);
   }
@@ -820,7 +854,8 @@ class _$SelectUrlImpl implements _SelectUrl {
     TResult? Function(_SelectRam value)? onSelectRam,
     TResult? Function(_SaveProduct value)? onSaveProduct,
     TResult? Function(_SelectUrl value)? onSelectImageUrl,
-    TResult? Function(_SelectProduct value)? onSelectProduct,
+    TResult? Function(_RandomProducts value)? onRandomProduct,
+    TResult? Function(_NameChanged value)? onNameChanged,
   }) {
     return onSelectImageUrl?.call(this);
   }
@@ -833,7 +868,8 @@ class _$SelectUrlImpl implements _SelectUrl {
     TResult Function(_SelectRam value)? onSelectRam,
     TResult Function(_SaveProduct value)? onSaveProduct,
     TResult Function(_SelectUrl value)? onSelectImageUrl,
-    TResult Function(_SelectProduct value)? onSelectProduct,
+    TResult Function(_RandomProducts value)? onRandomProduct,
+    TResult Function(_NameChanged value)? onNameChanged,
     required TResult orElse(),
   }) {
     if (onSelectImageUrl != null) {
@@ -853,75 +889,39 @@ abstract class _SelectUrl implements CreateProductEvent {
 }
 
 /// @nodoc
-abstract class _$$SelectProductImplCopyWith<$Res> {
-  factory _$$SelectProductImplCopyWith(
-          _$SelectProductImpl value, $Res Function(_$SelectProductImpl) then) =
-      __$$SelectProductImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Product storage});
-
-  $ProductCopyWith<$Res> get storage;
+abstract class _$$RandomProductsImplCopyWith<$Res> {
+  factory _$$RandomProductsImplCopyWith(_$RandomProductsImpl value,
+          $Res Function(_$RandomProductsImpl) then) =
+      __$$RandomProductsImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$SelectProductImplCopyWithImpl<$Res>
-    extends _$CreateProductEventCopyWithImpl<$Res, _$SelectProductImpl>
-    implements _$$SelectProductImplCopyWith<$Res> {
-  __$$SelectProductImplCopyWithImpl(
-      _$SelectProductImpl _value, $Res Function(_$SelectProductImpl) _then)
+class __$$RandomProductsImplCopyWithImpl<$Res>
+    extends _$CreateProductEventCopyWithImpl<$Res, _$RandomProductsImpl>
+    implements _$$RandomProductsImplCopyWith<$Res> {
+  __$$RandomProductsImplCopyWithImpl(
+      _$RandomProductsImpl _value, $Res Function(_$RandomProductsImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? storage = null,
-  }) {
-    return _then(_$SelectProductImpl(
-      null == storage
-          ? _value.storage
-          : storage // ignore: cast_nullable_to_non_nullable
-              as Product,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ProductCopyWith<$Res> get storage {
-    return $ProductCopyWith<$Res>(_value.storage, (value) {
-      return _then(_value.copyWith(storage: value));
-    });
-  }
 }
 
 /// @nodoc
 
-class _$SelectProductImpl implements _SelectProduct {
-  const _$SelectProductImpl(this.storage);
-
-  @override
-  final Product storage;
+class _$RandomProductsImpl implements _RandomProducts {
+  const _$RandomProductsImpl();
 
   @override
   String toString() {
-    return 'CreateProductEvent.onSelectProduct(storage: $storage)';
+    return 'CreateProductEvent.onRandomProduct()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SelectProductImpl &&
-            (identical(other.storage, storage) || other.storage == storage));
+        (other.runtimeType == runtimeType && other is _$RandomProductsImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, storage);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SelectProductImplCopyWith<_$SelectProductImpl> get copyWith =>
-      __$$SelectProductImplCopyWithImpl<_$SelectProductImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
@@ -931,9 +931,10 @@ class _$SelectProductImpl implements _SelectProduct {
     required TResult Function(SizeRam ram) onSelectRam,
     required TResult Function() onSaveProduct,
     required TResult Function(String url) onSelectImageUrl,
-    required TResult Function(Product storage) onSelectProduct,
+    required TResult Function() onRandomProduct,
+    required TResult Function(String? name) onNameChanged,
   }) {
-    return onSelectProduct(storage);
+    return onRandomProduct();
   }
 
   @override
@@ -944,9 +945,10 @@ class _$SelectProductImpl implements _SelectProduct {
     TResult? Function(SizeRam ram)? onSelectRam,
     TResult? Function()? onSaveProduct,
     TResult? Function(String url)? onSelectImageUrl,
-    TResult? Function(Product storage)? onSelectProduct,
+    TResult? Function()? onRandomProduct,
+    TResult? Function(String? name)? onNameChanged,
   }) {
-    return onSelectProduct?.call(storage);
+    return onRandomProduct?.call();
   }
 
   @override
@@ -957,11 +959,12 @@ class _$SelectProductImpl implements _SelectProduct {
     TResult Function(SizeRam ram)? onSelectRam,
     TResult Function()? onSaveProduct,
     TResult Function(String url)? onSelectImageUrl,
-    TResult Function(Product storage)? onSelectProduct,
+    TResult Function()? onRandomProduct,
+    TResult Function(String? name)? onNameChanged,
     required TResult orElse(),
   }) {
-    if (onSelectProduct != null) {
-      return onSelectProduct(storage);
+    if (onRandomProduct != null) {
+      return onRandomProduct();
     }
     return orElse();
   }
@@ -974,9 +977,10 @@ class _$SelectProductImpl implements _SelectProduct {
     required TResult Function(_SelectRam value) onSelectRam,
     required TResult Function(_SaveProduct value) onSaveProduct,
     required TResult Function(_SelectUrl value) onSelectImageUrl,
-    required TResult Function(_SelectProduct value) onSelectProduct,
+    required TResult Function(_RandomProducts value) onRandomProduct,
+    required TResult Function(_NameChanged value) onNameChanged,
   }) {
-    return onSelectProduct(this);
+    return onRandomProduct(this);
   }
 
   @override
@@ -987,9 +991,10 @@ class _$SelectProductImpl implements _SelectProduct {
     TResult? Function(_SelectRam value)? onSelectRam,
     TResult? Function(_SaveProduct value)? onSaveProduct,
     TResult? Function(_SelectUrl value)? onSelectImageUrl,
-    TResult? Function(_SelectProduct value)? onSelectProduct,
+    TResult? Function(_RandomProducts value)? onRandomProduct,
+    TResult? Function(_NameChanged value)? onNameChanged,
   }) {
-    return onSelectProduct?.call(this);
+    return onRandomProduct?.call(this);
   }
 
   @override
@@ -1000,22 +1005,181 @@ class _$SelectProductImpl implements _SelectProduct {
     TResult Function(_SelectRam value)? onSelectRam,
     TResult Function(_SaveProduct value)? onSaveProduct,
     TResult Function(_SelectUrl value)? onSelectImageUrl,
-    TResult Function(_SelectProduct value)? onSelectProduct,
+    TResult Function(_RandomProducts value)? onRandomProduct,
+    TResult Function(_NameChanged value)? onNameChanged,
     required TResult orElse(),
   }) {
-    if (onSelectProduct != null) {
-      return onSelectProduct(this);
+    if (onRandomProduct != null) {
+      return onRandomProduct(this);
     }
     return orElse();
   }
 }
 
-abstract class _SelectProduct implements CreateProductEvent {
-  const factory _SelectProduct(final Product storage) = _$SelectProductImpl;
+abstract class _RandomProducts implements CreateProductEvent {
+  const factory _RandomProducts() = _$RandomProductsImpl;
+}
 
-  Product get storage;
+/// @nodoc
+abstract class _$$NameChangedImplCopyWith<$Res> {
+  factory _$$NameChangedImplCopyWith(
+          _$NameChangedImpl value, $Res Function(_$NameChangedImpl) then) =
+      __$$NameChangedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String? name});
+}
+
+/// @nodoc
+class __$$NameChangedImplCopyWithImpl<$Res>
+    extends _$CreateProductEventCopyWithImpl<$Res, _$NameChangedImpl>
+    implements _$$NameChangedImplCopyWith<$Res> {
+  __$$NameChangedImplCopyWithImpl(
+      _$NameChangedImpl _value, $Res Function(_$NameChangedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = freezed,
+  }) {
+    return _then(_$NameChangedImpl(
+      freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$NameChangedImpl implements _NameChanged {
+  const _$NameChangedImpl(this.name);
+
+  @override
+  final String? name;
+
+  @override
+  String toString() {
+    return 'CreateProductEvent.onNameChanged(name: $name)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$NameChangedImpl &&
+            (identical(other.name, name) || other.name == name));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, name);
+
   @JsonKey(ignore: true)
-  _$$SelectProductImplCopyWith<_$SelectProductImpl> get copyWith =>
+  @override
+  @pragma('vm:prefer-inline')
+  _$$NameChangedImplCopyWith<_$NameChangedImpl> get copyWith =>
+      __$$NameChangedImplCopyWithImpl<_$NameChangedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ColorProduct color) onSelectColor,
+    required TResult Function(Storage storage) onSelectStorage,
+    required TResult Function(SizeRam ram) onSelectRam,
+    required TResult Function() onSaveProduct,
+    required TResult Function(String url) onSelectImageUrl,
+    required TResult Function() onRandomProduct,
+    required TResult Function(String? name) onNameChanged,
+  }) {
+    return onNameChanged(name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ColorProduct color)? onSelectColor,
+    TResult? Function(Storage storage)? onSelectStorage,
+    TResult? Function(SizeRam ram)? onSelectRam,
+    TResult? Function()? onSaveProduct,
+    TResult? Function(String url)? onSelectImageUrl,
+    TResult? Function()? onRandomProduct,
+    TResult? Function(String? name)? onNameChanged,
+  }) {
+    return onNameChanged?.call(name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ColorProduct color)? onSelectColor,
+    TResult Function(Storage storage)? onSelectStorage,
+    TResult Function(SizeRam ram)? onSelectRam,
+    TResult Function()? onSaveProduct,
+    TResult Function(String url)? onSelectImageUrl,
+    TResult Function()? onRandomProduct,
+    TResult Function(String? name)? onNameChanged,
+    required TResult orElse(),
+  }) {
+    if (onNameChanged != null) {
+      return onNameChanged(name);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SelectColor value) onSelectColor,
+    required TResult Function(_SelectStorage value) onSelectStorage,
+    required TResult Function(_SelectRam value) onSelectRam,
+    required TResult Function(_SaveProduct value) onSaveProduct,
+    required TResult Function(_SelectUrl value) onSelectImageUrl,
+    required TResult Function(_RandomProducts value) onRandomProduct,
+    required TResult Function(_NameChanged value) onNameChanged,
+  }) {
+    return onNameChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SelectColor value)? onSelectColor,
+    TResult? Function(_SelectStorage value)? onSelectStorage,
+    TResult? Function(_SelectRam value)? onSelectRam,
+    TResult? Function(_SaveProduct value)? onSaveProduct,
+    TResult? Function(_SelectUrl value)? onSelectImageUrl,
+    TResult? Function(_RandomProducts value)? onRandomProduct,
+    TResult? Function(_NameChanged value)? onNameChanged,
+  }) {
+    return onNameChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SelectColor value)? onSelectColor,
+    TResult Function(_SelectStorage value)? onSelectStorage,
+    TResult Function(_SelectRam value)? onSelectRam,
+    TResult Function(_SaveProduct value)? onSaveProduct,
+    TResult Function(_SelectUrl value)? onSelectImageUrl,
+    TResult Function(_RandomProducts value)? onRandomProduct,
+    TResult Function(_NameChanged value)? onNameChanged,
+    required TResult orElse(),
+  }) {
+    if (onNameChanged != null) {
+      return onNameChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NameChanged implements CreateProductEvent {
+  const factory _NameChanged(final String? name) = _$NameChangedImpl;
+
+  String? get name;
+  @JsonKey(ignore: true)
+  _$$NameChangedImplCopyWith<_$NameChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1026,8 +1190,8 @@ mixin _$CreateProductState {
   List<SizeRam> get selectedRams => throw _privateConstructorUsedError;
   List<Storage> get selectedStorages => throw _privateConstructorUsedError;
   CreateProductStateStatus get status => throw _privateConstructorUsedError;
-  List<Product> get products => throw _privateConstructorUsedError;
-  Product? get selectedProduct => throw _privateConstructorUsedError;
+  List<Product> get similarProducts => throw _privateConstructorUsedError;
+  Product? get product => throw _privateConstructorUsedError;
   String? get imageUrl => throw _privateConstructorUsedError;
   Object? get error => throw _privateConstructorUsedError;
 
@@ -1048,12 +1212,12 @@ abstract class $CreateProductStateCopyWith<$Res> {
       List<SizeRam> selectedRams,
       List<Storage> selectedStorages,
       CreateProductStateStatus status,
-      List<Product> products,
-      Product? selectedProduct,
+      List<Product> similarProducts,
+      Product? product,
       String? imageUrl,
       Object? error});
 
-  $ProductCopyWith<$Res>? get selectedProduct;
+  $ProductCopyWith<$Res>? get product;
 }
 
 /// @nodoc
@@ -1074,8 +1238,8 @@ class _$CreateProductStateCopyWithImpl<$Res, $Val extends CreateProductState>
     Object? selectedRams = null,
     Object? selectedStorages = null,
     Object? status = null,
-    Object? products = null,
-    Object? selectedProduct = freezed,
+    Object? similarProducts = null,
+    Object? product = freezed,
     Object? imageUrl = freezed,
     Object? error = freezed,
   }) {
@@ -1100,13 +1264,13 @@ class _$CreateProductStateCopyWithImpl<$Res, $Val extends CreateProductState>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as CreateProductStateStatus,
-      products: null == products
-          ? _value.products
-          : products // ignore: cast_nullable_to_non_nullable
+      similarProducts: null == similarProducts
+          ? _value.similarProducts
+          : similarProducts // ignore: cast_nullable_to_non_nullable
               as List<Product>,
-      selectedProduct: freezed == selectedProduct
-          ? _value.selectedProduct
-          : selectedProduct // ignore: cast_nullable_to_non_nullable
+      product: freezed == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
               as Product?,
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
@@ -1118,13 +1282,13 @@ class _$CreateProductStateCopyWithImpl<$Res, $Val extends CreateProductState>
 
   @override
   @pragma('vm:prefer-inline')
-  $ProductCopyWith<$Res>? get selectedProduct {
-    if (_value.selectedProduct == null) {
+  $ProductCopyWith<$Res>? get product {
+    if (_value.product == null) {
       return null;
     }
 
-    return $ProductCopyWith<$Res>(_value.selectedProduct!, (value) {
-      return _then(_value.copyWith(selectedProduct: value) as $Val);
+    return $ProductCopyWith<$Res>(_value.product!, (value) {
+      return _then(_value.copyWith(product: value) as $Val);
     });
   }
 }
@@ -1143,13 +1307,13 @@ abstract class _$$CreateProductStateImplCopyWith<$Res>
       List<SizeRam> selectedRams,
       List<Storage> selectedStorages,
       CreateProductStateStatus status,
-      List<Product> products,
-      Product? selectedProduct,
+      List<Product> similarProducts,
+      Product? product,
       String? imageUrl,
       Object? error});
 
   @override
-  $ProductCopyWith<$Res>? get selectedProduct;
+  $ProductCopyWith<$Res>? get product;
 }
 
 /// @nodoc
@@ -1168,8 +1332,8 @@ class __$$CreateProductStateImplCopyWithImpl<$Res>
     Object? selectedRams = null,
     Object? selectedStorages = null,
     Object? status = null,
-    Object? products = null,
-    Object? selectedProduct = freezed,
+    Object? similarProducts = null,
+    Object? product = freezed,
     Object? imageUrl = freezed,
     Object? error = freezed,
   }) {
@@ -1194,13 +1358,13 @@ class __$$CreateProductStateImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as CreateProductStateStatus,
-      products: null == products
-          ? _value._products
-          : products // ignore: cast_nullable_to_non_nullable
+      similarProducts: null == similarProducts
+          ? _value._similarProducts
+          : similarProducts // ignore: cast_nullable_to_non_nullable
               as List<Product>,
-      selectedProduct: freezed == selectedProduct
-          ? _value.selectedProduct
-          : selectedProduct // ignore: cast_nullable_to_non_nullable
+      product: freezed == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
               as Product?,
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
@@ -1220,14 +1384,14 @@ class _$CreateProductStateImpl implements _CreateProductState {
       final List<SizeRam> selectedRams = const [],
       final List<Storage> selectedStorages = const [],
       this.status = CreateProductStateStatus.initial,
-      final List<Product> products = const [],
-      this.selectedProduct,
+      final List<Product> similarProducts = const [],
+      this.product,
       this.imageUrl,
       this.error})
       : _selectedColors = selectedColors,
         _selectedRams = selectedRams,
         _selectedStorages = selectedStorages,
-        _products = products;
+        _similarProducts = similarProducts;
 
   @override
   final String? model;
@@ -1262,17 +1426,17 @@ class _$CreateProductStateImpl implements _CreateProductState {
   @override
   @JsonKey()
   final CreateProductStateStatus status;
-  final List<Product> _products;
+  final List<Product> _similarProducts;
   @override
   @JsonKey()
-  List<Product> get products {
-    if (_products is EqualUnmodifiableListView) return _products;
+  List<Product> get similarProducts {
+    if (_similarProducts is EqualUnmodifiableListView) return _similarProducts;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_products);
+    return EqualUnmodifiableListView(_similarProducts);
   }
 
   @override
-  final Product? selectedProduct;
+  final Product? product;
   @override
   final String? imageUrl;
   @override
@@ -1280,7 +1444,7 @@ class _$CreateProductStateImpl implements _CreateProductState {
 
   @override
   String toString() {
-    return 'CreateProductState(model: $model, selectedColors: $selectedColors, selectedRams: $selectedRams, selectedStorages: $selectedStorages, status: $status, products: $products, selectedProduct: $selectedProduct, imageUrl: $imageUrl, error: $error)';
+    return 'CreateProductState(model: $model, selectedColors: $selectedColors, selectedRams: $selectedRams, selectedStorages: $selectedStorages, status: $status, similarProducts: $similarProducts, product: $product, imageUrl: $imageUrl, error: $error)';
   }
 
   @override
@@ -1296,9 +1460,9 @@ class _$CreateProductStateImpl implements _CreateProductState {
             const DeepCollectionEquality()
                 .equals(other._selectedStorages, _selectedStorages) &&
             (identical(other.status, status) || other.status == status) &&
-            const DeepCollectionEquality().equals(other._products, _products) &&
-            (identical(other.selectedProduct, selectedProduct) ||
-                other.selectedProduct == selectedProduct) &&
+            const DeepCollectionEquality()
+                .equals(other._similarProducts, _similarProducts) &&
+            (identical(other.product, product) || other.product == product) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
             const DeepCollectionEquality().equals(other.error, error));
@@ -1312,8 +1476,8 @@ class _$CreateProductStateImpl implements _CreateProductState {
       const DeepCollectionEquality().hash(_selectedRams),
       const DeepCollectionEquality().hash(_selectedStorages),
       status,
-      const DeepCollectionEquality().hash(_products),
-      selectedProduct,
+      const DeepCollectionEquality().hash(_similarProducts),
+      product,
       imageUrl,
       const DeepCollectionEquality().hash(error));
 
@@ -1332,8 +1496,8 @@ abstract class _CreateProductState implements CreateProductState {
       final List<SizeRam> selectedRams,
       final List<Storage> selectedStorages,
       final CreateProductStateStatus status,
-      final List<Product> products,
-      final Product? selectedProduct,
+      final List<Product> similarProducts,
+      final Product? product,
       final String? imageUrl,
       final Object? error}) = _$CreateProductStateImpl;
 
@@ -1348,9 +1512,9 @@ abstract class _CreateProductState implements CreateProductState {
   @override
   CreateProductStateStatus get status;
   @override
-  List<Product> get products;
+  List<Product> get similarProducts;
   @override
-  Product? get selectedProduct;
+  Product? get product;
   @override
   String? get imageUrl;
   @override

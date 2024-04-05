@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/core/di/locator.dart';
 import 'package:flutter_application/presentation/blocs/products_list_bloc/products_list_bloc.dart';
 import 'package:flutter_application/presentation/views/create_product/create_product_view.dart';
+import 'package:flutter_application/presentation/views/product_info/product_info_view.dart';
 import 'package:flutter_application/service/models/product.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -70,6 +71,15 @@ class __ProductsListViewBody extends StatelessWidget {
       shrinkWrap: true,
       itemBuilder: (ctx, index) => Card(
           child: ListTile(
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => ProductInfoView(
+                id: products[index].id,
+              ),
+            ),
+          );
+        },
         leading: products[index].imagePath != null
             ? CircleAvatar(
                 backgroundImage: NetworkImage(

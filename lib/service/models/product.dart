@@ -14,11 +14,14 @@ class Product with _$Product {
   const factory Product({
     @HiveField(0) required String id,
     @HiveField(1) required String name,
-    @HiveField(2) required List<ColorProduct> colors,
-    @HiveField(3) required List<SizeRam> rams,
-    @HiveField(4) required List<Storage> storages,
+    @HiveField(2) @Default([]) List<ColorProduct> colors,
+    @HiveField(3) @Default([]) List<SizeRam> rams,
+    @HiveField(4) @Default([]) List<Storage> storages,
     @HiveField(5) String? imagePath,
     @HiveField(6) @Default([]) List<Product> similarProducts,
+    @HiveField(7) ColorProduct? selectedColor,
+    @HiveField(8) SizeRam? selectedRam,
+    @HiveField(9) Storage? selectedStorage,
   }) = _Product;
 
   factory Product.fromJson(Map<String, Object?> json) =>

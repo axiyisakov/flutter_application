@@ -10,6 +10,6 @@ class CreateProductEvent with _$CreateProductEvent {
   const factory CreateProductEvent.onSaveProduct() = _SaveProduct;
   const factory CreateProductEvent.onSelectImageUrl(String url) = _SelectUrl;
 
-  const factory CreateProductEvent.onSelectProduct(Product storage) =
-      _SelectProduct;
+  const factory CreateProductEvent.onRandomProduct() = _RandomProducts;
+  const factory CreateProductEvent.onNameChanged(String? name) = _NameChanged;
 }

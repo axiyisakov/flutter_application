@@ -7,7 +7,7 @@ class UploadPhotoState with _$UploadPhotoState {
     File? image,
     String? url,
     String? message,
-    @Default(0) double proggress,
+    @Default(0) double progress,
     Object? error,
   }) = _UploadPhotoState;
 }

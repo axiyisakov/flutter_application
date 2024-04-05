@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/core/di/locator.dart';
 import 'package:flutter_application/presentation/blocs/create_bloc/create_product_bloc.dart';
 import 'package:flutter_application/presentation/views/create_product/ram_selector.dart';
+import 'package:flutter_application/presentation/views/create_product/similar_products_view.dart';
 import 'package:flutter_application/presentation/views/products_list/products_view.dart';
-import 'package:flutter_application/presentation/views/upload_image/upload_horizontal_widget.dart';
+import 'package:flutter_application/presentation/views/upload_image/upload_widget.dart';
 import 'package:flutter_application/service/models/color_enum.dart';
 import 'package:flutter_application/service/models/memory_enum.dart';
 import 'package:flutter_application/service/models/size_enum.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 import 'color_selector.dart';
 import 'memory_selector.dart';
@@ -97,6 +99,9 @@ class _CreateProductBodyState extends State<_CreateProductBody> {
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: TextField(
                     controller: _nameController,
+                    onChanged: (value) => bloc.add(
+                      CreateProductEvent.onNameChanged(value),
+                    ),
                     decoration: const InputDecoration(
                       labelText: 'Name',
                     ),
@@ -105,7 +110,7 @@ class _CreateProductBodyState extends State<_CreateProductBody> {
                 const SizedBox(
                   height: 20,
                 ),
-                const UploadHorizontalWidget(),
+                const UploadPhotoWidget(),
                 const SizedBox(
                   height: 20,
                 ),
@@ -116,6 +121,9 @@ class _CreateProductBodyState extends State<_CreateProductBody> {
                     builder: (context, colors) {
                       return ColorSelectorView(
                         selectedColors: colors,
+                        onTap: (e) {
+                          bloc.add(CreateProductEvent.onSelectColor(e));
+                        },
                       );
                     }),
                 const SizedBox(
@@ -128,6 +136,9 @@ class _CreateProductBodyState extends State<_CreateProductBody> {
                     builder: (context, storages) {
                       return MemorySelectorView(
                         storages: storages,
+                        onTap: (e) {
+                          bloc.add(CreateProductEvent.onSelectStorage(e));
+                        },
                       );
                     }),
                 const SizedBox(
@@ -140,6 +151,9 @@ class _CreateProductBodyState extends State<_CreateProductBody> {
                     builder: (context, rams) {
                       return RamSelectorView(
                         rams: rams,
+                        onTap: (e) {
+                          bloc.add(CreateProductEvent.onSelectRam(e));
+                        },
                       );
                     }),
                 const SizedBox(
@@ -147,9 +161,13 @@ class _CreateProductBodyState extends State<_CreateProductBody> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: SizedBox(
-                    width: MediaQuery.sizeOf(context).width,
-                    child: const _SaveButton(),
+                  child: IgnorePointer(
+                    ignoring:
+                        bloc.state.imageUrl != null && bloc.state.model != null,
+                    child: SizedBox(
+                      width: MediaQuery.sizeOf(context).width,
+                      child: const _SaveButton(),
+                    ),
                   ),
                 ),
               ]
@@ -162,15 +180,31 @@ class _CreateProductBodyState extends State<_CreateProductBody> {
 }
 
 class _SaveButton extends StatelessWidget {
-  const _SaveButton({super.key});
+  const _SaveButton({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final bloc = context.read<CreateProductBloc>();
     return ElevatedButton(
-      onPressed: () {
-        context
-            .read<CreateProductBloc>()
-            .add(const CreateProductEvent.onSaveProduct());
+      onPressed: () async {
+        bloc.add(const CreateProductEvent.onRandomProduct());
+        if (bloc.state.similarProducts.isNotEmpty) {
+          final saveProducts = await showMaterialModalBottomSheet<bool>(
+            context: context,
+            isDismissible: false,
+            builder: (context) {
+              return SimilarProductsView(
+                similarProducts: bloc.state.similarProducts,
+              );
+            },
+          );
+
+          if (saveProducts != null && saveProducts) {
+            bloc.add(const CreateProductEvent.onSaveProduct());
+          }
+        }
       },
       child: const Text('Save'),
     );

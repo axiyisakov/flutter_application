@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/presentation/blocs/create_bloc/create_product_bloc.dart';
 import 'package:flutter_application/service/models/color_enum.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ColorSelectorView extends StatelessWidget {
   final List<ColorProduct> selectedColors;
+  final ValueChanged<ColorProduct> onTap;
   const ColorSelectorView({
     super.key,
     required this.selectedColors,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    final bloc = context.read<CreateProductBloc>();
     return Column(mainAxisSize: MainAxisSize.min, children: [
       const Text("Color Selector"),
       SizedBox(
@@ -28,9 +27,7 @@ class ColorSelectorView extends StatelessWidget {
                   color: MaterialStateProperty.all<Color>(
                     selectedColors.contains(e) ? Colors.blue : Colors.white,
                   ),
-                  onPressed: () {
-                    bloc.add(CreateProductEvent.onSelectColor(e));
-                  },
+                  onPressed: () => onTap(e),
                 ),
               ),
             )

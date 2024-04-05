@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/presentation/blocs/create_bloc/create_product_bloc.dart';
 import 'package:flutter_application/service/models/memory_enum.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MemorySelectorView extends StatelessWidget {
   final List<Storage> storages;
+  final ValueChanged<Storage> onTap;
   const MemorySelectorView({
     super.key,
     required this.storages,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    final bloc = context.read<CreateProductBloc>();
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -30,9 +29,7 @@ class MemorySelectorView extends StatelessWidget {
                     color: MaterialStateProperty.all<Color>(
                       storages.contains(e) ? Colors.blue : Colors.white,
                     ),
-                    onPressed: () {
-                      bloc.add(CreateProductEvent.onSelectStorage(e));
-                    },
+                    onPressed: () => onTap(e),
                   ),
                 ),
               )
