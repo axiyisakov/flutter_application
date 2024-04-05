@@ -110,6 +110,9 @@ class _CreateProductBody extends StatelessWidget {
                     builder: (context, storage) {
                       return MemorySelectorView(
                         storage: storage,
+                        colorProduct: bloc.state.color,
+                        ram: bloc.state.size,
+                        model: bloc.state.model,
                       );
                     }),
                 const SizedBox(
