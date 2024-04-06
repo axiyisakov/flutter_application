@@ -41,7 +41,7 @@ class UploadPhotoBloc extends Bloc<UploadPhotoEvent, UploadPhotoState> {
 
   Future<void> _pickImage(Emitter<UploadPhotoState> emit) async {
     try {
-      final permission = await Permission.photos.request();
+      final permission = await Permission.storage.request();
       // if (permission.isGranted) {
       final pickedImage = await _imagePicker.pickImage(
         source: ImageSource.gallery,
