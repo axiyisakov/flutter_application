@@ -82,6 +82,9 @@ class _ProductInfoBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = context.read<ProductInfoBloc>();
     return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(
+        parent: AlwaysScrollableScrollPhysics(),
+      ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -96,7 +99,8 @@ class _ProductInfoBody extends StatelessWidget {
           bloc.state.product!.imagePath != null
               ? CircleAvatar(
                   backgroundImage: NetworkImage(
-                      "https://api-test.coozin.uz${bloc.state.product!.imagePath!}"),
+                    "https://api-test.coozin.uz${bloc.state.product!.imagePath!}",
+                  ),
                   radius: 20,
                 )
               : const SizedBox.shrink(),

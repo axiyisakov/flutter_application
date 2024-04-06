@@ -85,8 +85,35 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
           }
         },
         onRandomProduct: () async => showSimilarProducts(),
+        onSelectSimilarProductImage: (url, id) {
+          if (state.similarProducts.isNotEmpty &&
+              state.similarProducts.any((e) => e.id == id)) {
+            final newProduct =
+                state.similarProducts.firstWhere((e) => e.id == id).copyWith(
+                      imagePath: url,
+                    );
+            final newSimilarProducts = state.similarProducts.map((e) {
+              if (e.id == id) {
+                return newProduct;
+              }
+              return e;
+            }).toList();
+
+            final newProductState = state.product?.copyWith(
+              similarProducts: newSimilarProducts,
+              imagePath: state.imageUrl,
+            );
+
+            emit(state.copyWith(
+              product: newProductState,
+              similarProducts: newSimilarProducts,
+            ));
+          }
+        },
         onSelectImageUrl: (url) {
-          emit(state.copyWith(imageUrl: url));
+          emit(state.copyWith(
+            imageUrl: url,
+          ));
         },
         onSaveProduct: () async => await saveDataToLocal(emit),
       );

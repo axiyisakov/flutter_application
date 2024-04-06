@@ -16,13 +16,10 @@ class UploadImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200,
-      width: 200,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (image != null) ...[
-            Stack(
+      height: 100,
+      width: 100,
+      child: image != null
+          ? Stack(
               fit: StackFit.loose,
               children: [
                 Image.file(
@@ -48,23 +45,28 @@ class UploadImageWidget extends StatelessWidget {
                     )),
                   ),
                 ),
+                Positioned(
+                    bottom: .0,
+                    left: .0,
+                    child: InkWell(
+                      child: const Card(
+                        child: Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Icon(CupertinoIcons.upload_circle),
+                        ),
+                      ),
+                      onTap: () {
+                        BlocProvider.of<UploadPhotoBloc>(context, listen: false)
+                            .add(
+                          UploadPhotoEvent.uploadImage(
+                            image!,
+                          ),
+                        );
+                      },
+                    ))
               ],
-            ),
-            ElevatedButton(
-              onPressed: () {
-                BlocProvider.of<UploadPhotoBloc>(context, listen: false).add(
-                  UploadPhotoEvent.uploadImage(
-                    image!,
-                  ),
-                );
-              },
-              child: const Text(
-                'Upload image to server',
-              ),
             )
-          ]
-        ],
-      ),
+          : const Icon(Icons.error),
     );
   }
 }

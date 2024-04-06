@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/service/models/product.dart';
+import 'package:getwidget/getwidget.dart';
 
 class ProductItem extends StatelessWidget {
   final Product product;
@@ -12,7 +12,13 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: CupertinoListTile(
+      child: GFListTile(
+        avatar: product.imagePath != null
+            ? CircleAvatar(
+                backgroundImage: NetworkImage(
+                    "https://api-test.coozin.uz${product.imagePath!}"),
+              )
+            : const FlutterLogo(),
         title: RichText(
           text: TextSpan(
               text: product.name,

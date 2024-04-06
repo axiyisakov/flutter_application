@@ -1,26 +1,36 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/core/di/locator.dart';
-import 'package:flutter_application/presentation/blocs/create_bloc/create_product_bloc.dart';
 import 'package:flutter_application/presentation/blocs/upload_photo_bloc/upload_photo_bloc.dart';
 import 'package:flutter_application/presentation/views/upload_image/pick_image.dart';
 import 'package:flutter_application/presentation/views/upload_image/upload_image_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class UploadPhotoWidget extends StatelessWidget {
-  const UploadPhotoWidget({super.key});
+  final ValueChanged<String?> onUpload;
+
+  const UploadPhotoWidget({
+    super.key,
+    required this.onUpload,
+  });
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (ctx) => sl<UploadPhotoBloc>(),
-      child: const _UploadView(),
+      child: _UploadView(
+        onUpload: onUpload,
+      ),
     );
   }
 }
 
 class _UploadView extends StatelessWidget {
-  const _UploadView({super.key});
+  final ValueChanged<String?> onUpload;
+  const _UploadView({
+    super.key,
+    required this.onUpload,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -31,17 +41,13 @@ class _UploadView extends StatelessWidget {
           UploadPhotoStatus.loading => const Center(
               child: CircularProgressIndicator(),
             ),
-          UploadPhotoStatus.success => const Center(
-              child: Icon(
-                CupertinoIcons.check_mark,
-                size: 50,
-              ),
+          UploadPhotoStatus.success => const Icon(
+              CupertinoIcons.check_mark,
+              size: 50,
             ),
-          UploadPhotoStatus.failure => const Center(
-              child: Icon(
-                Icons.error,
-                size: 50,
-              ),
+          UploadPhotoStatus.failure => const Icon(
+              Icons.error,
+              size: 50,
             ),
           UploadPhotoStatus.pickImage => const SizedBox(
               height: 60,
@@ -50,10 +56,10 @@ class _UploadView extends StatelessWidget {
           UploadPhotoStatus.uploadImage => UploadImageWidget(
               image: state.image,
             ),
-          UploadPhotoStatus.uploading => Center(
-              child: SizedBox(
-                height: 100,
-                width: 100,
+          UploadPhotoStatus.uploading => SizedBox(
+              height: 100,
+              width: 100,
+              child: Center(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -76,9 +82,7 @@ class _UploadView extends StatelessWidget {
           debugPrint(state.message!);
         }
         if (state.status == UploadPhotoStatus.success) {
-          BlocProvider.of<CreateProductBloc>(context, listen: false).add(
-            CreateProductEvent.onSelectImageUrl(state.url!),
-          );
+          onUpload(state.url);
         }
       },
     );

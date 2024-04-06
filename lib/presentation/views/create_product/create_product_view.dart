@@ -110,7 +110,15 @@ class _CreateProductBodyState extends State<_CreateProductBody> {
                 const SizedBox(
                   height: 20,
                 ),
-                const UploadPhotoWidget(),
+                UploadPhotoWidget(
+                  onUpload: (url) {
+                    if (url != null) {
+                      bloc.add(
+                        CreateProductEvent.onSelectImageUrl(url),
+                      );
+                    }
+                  },
+                ),
                 const SizedBox(
                   height: 20,
                 ),
@@ -187,26 +195,36 @@ class _SaveButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<CreateProductBloc>();
-    return ElevatedButton(
-      onPressed: () async {
-        bloc.add(const CreateProductEvent.onRandomProduct());
-        if (bloc.state.similarProducts.isNotEmpty) {
-          final saveProducts = await showMaterialModalBottomSheet<bool>(
-            context: context,
-            isDismissible: false,
-            builder: (context) {
-              return SimilarProductsView(
-                similarProducts: bloc.state.similarProducts,
-              );
-            },
-          );
+    return Builder(builder: (context) {
+      return ElevatedButton(
+        onPressed: () async {
+          bloc.add(const CreateProductEvent.onRandomProduct());
+          if (bloc.state.similarProducts.isNotEmpty) {
+            final saveProducts = await showMaterialModalBottomSheet<bool>(
+              context: context,
+              isDismissible: false,
+              builder: (context) {
+                return SimilarProductsView(
+                  similarProducts: bloc.state.similarProducts,
+                  onSelectSimilarProductImage: (url, {required String id}) {
+                    bloc.add(
+                      CreateProductEvent.onSelectSimilarProductImage(
+                        url,
+                        id: id,
+                      ),
+                    );
+                  },
+                );
+              },
+            );
 
-          if (saveProducts != null && saveProducts) {
-            bloc.add(const CreateProductEvent.onSaveProduct());
+            if (saveProducts != null && saveProducts) {
+              bloc.add(const CreateProductEvent.onSaveProduct());
+            }
           }
-        }
-      },
-      child: const Text('Save'),
-    );
+        },
+        child: const Text('Save'),
+      );
+    });
   }
 }

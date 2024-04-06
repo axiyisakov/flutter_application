@@ -1,12 +1,17 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application/presentation/views/upload_image/upload_widget.dart';
 import 'package:flutter_application/service/models/product.dart';
+
+typedef OnSelectSimilarProductImage = void Function(String url,
+    {required String id});
 
 class SimilarProductsView extends StatelessWidget {
   final List<Product> similarProducts;
+  final OnSelectSimilarProductImage onSelectSimilarProductImage;
   const SimilarProductsView({
     super.key,
     required this.similarProducts,
+    required this.onSelectSimilarProductImage,
   });
 
   @override
@@ -18,7 +23,12 @@ class SimilarProductsView extends StatelessWidget {
           itemBuilder: (context, index) {
             final product = similarProducts[index];
             return Card(
-              child: CupertinoListTile(
+              child: ListTile(
+                leading: UploadPhotoWidget(
+                  onUpload: (url) {
+                    onSelectSimilarProductImage(url!, id: product.id);
+                  },
+                ),
                 title: RichText(
                   text: TextSpan(
                       text: product.name,
