@@ -146,6 +146,7 @@ class _ProductInfoBody extends StatelessWidget {
           const Text('Similar Products'),
           ListView.builder(
             shrinkWrap: true,
+            primary: false,
             itemCount: product.similarProducts.length,
             itemBuilder: (context, index) =>
                 ProductItem(product: product.similarProducts[index]),
